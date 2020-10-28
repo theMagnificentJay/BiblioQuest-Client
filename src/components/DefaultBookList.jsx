@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-    return (
-        <div></div>
-    );
+const DefaultBookList = (props) => {
+  return <div></div>;
+};
 
 export default DefaultBookList;
