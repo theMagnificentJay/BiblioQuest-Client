@@ -106,6 +106,12 @@ code {
   color: #463d19 ;
 }
 
+<<<<<<< HEAD
+=======
+.remove-all-styles {
+  all: revert;
+}
+>>>>>>> Login/Register Modal implementation
 
 .modal-dialog {
   height: 100%;
@@ -125,4 +131,9 @@ code {
   margin: 0 auto;
   margin-bottom: 10px;
   width: 80%;
+}
+
+.modalFooterLink {
+  color: blue;
+  cursor: pointer;
 }

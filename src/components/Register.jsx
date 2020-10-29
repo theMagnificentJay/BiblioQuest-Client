@@ -44,14 +44,6 @@ const Register = (props) => {
 
       <Container className="footerLoginModal text-center">
       <Button className="signUpBtn">Sign Up</Button>
-      <ModalFooter>
-        <p>
-          Already have an account?{" "}
-          <a href="#loginModal" data-toggle="modal" data-dismiss="modal">
-            Login
-          </a>
-        </p>
-      </ModalFooter>
       </Container>
     </Container>
   );
