@@ -1,7 +1,12 @@
 import React from "react";
+import { Container, Row, Col, Nav, Navbar } from "reactstrap";
 
-const Footer = (props) => {
-  return <div></div>;
+const FooterComponent = (props) => {
+  return (
+    <Row className="footer">
+      Footer
+    </Row>
+  );
 };
 
-export default Footer;
+export default FooterComponent;

@@ -17,7 +17,7 @@ code {
   margin-top: 5vh;
   margin-bottom: 5vh;
   border: 2px solid green;
-  width: 90vw;
+  width: 95vw;
   height: 90vh;
   overflow: hidden;
   position: relative;
@@ -26,7 +26,7 @@ code {
 .mainContainer {
   position: absolute;
   margin: 0 auto;
-  margin-top: 45px;
+  margin-top: 6vh;
   margin-left: 5%;
   padding: 10px;
   border: 1px dashed yellowgreen;
@@ -41,7 +41,7 @@ code {
   top: 0;
   left: 15px;
   border: 2px dashed blue;
-  width: 100%
+  width: 100%;
 }
 
 .col {
@@ -82,4 +82,28 @@ code {
   left: 15px;
   border: 2px dashed purple;
   width: 100%
+}
+
+.colFooter {
+  
+}
+
+.modal-dialog {
+  height: 100%;
+}
+
+.modal-content {
+  padding: 10px;
+  margin: 0 auto;
+}
+
+.footerLoginModal {
+  margin: 0 auto;
+  align-items: center;
+}
+
+.signUpBtn {
+  margin: 0 auto;
+  margin-bottom: 10px;
+  width: 80%;
 }
