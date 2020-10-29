@@ -84,8 +84,8 @@ code {
   width: 100%
 }
 
-.colFooter {
-  
+.remove-all-styles {
+  all: revert;
 }
 
 .modal-dialog {
@@ -106,4 +106,9 @@ code {
   margin: 0 auto;
   margin-bottom: 10px;
   width: 80%;
+}
+
+.modalFooterLink {
+  color: blue;
+  cursor: pointer;
 }

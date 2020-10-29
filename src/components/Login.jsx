@@ -31,17 +31,8 @@ const Login = (props) => {
           />
         </Container>
       </Container>
-
       <Container className="footerLoginModal text-center">
       <Button className="signUpBtn">Login</Button>
-      <ModalFooter>
-        <p>
-          Don't have an account?{" "}
-          <a href="#loginModal" data-toggle="modal" data-dismiss="modal">
-            Sign Up
-          </a>
-        </p>
-      </ModalFooter>
       </Container>
     </Container>
   );

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Login from './Login';
+import Register from './Register';
 import {
   Button,
   Modal,
@@ -12,19 +13,29 @@ import {
 const LoginModal = (props) => {
   const { className } = props;
   const [modal, setModal] = useState(false);
+  
+  const [toggle2, setToggle2] = useState(true);
 
   const toggle = () => setModal(!modal);
 
   return (
     <div>
       <Form inline onSubmit={(e) => e.preventDefault()}>
-        <Button onClick={toggle}>Login/Register/User</Button>
+        <Button onClick={toggle}>Login</Button>
       </Form>
       <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader toggle={toggle}>Login</ModalHeader>
+        <ModalHeader toggle={toggle}>
+          {toggle2 ? 'Login' : 'Sign Up'}
+        </ModalHeader>
         <ModalBody>
-            <Login />
+          {toggle2 ? (<Login />) : (<Register />)} 
         </ModalBody>
+        <ModalFooter>
+        <p>
+          {toggle2 ? "Don't have an account?" : "Already have an account?"}{" "}
+          <a className="modalFooterLink" data-toggle="modal" data-dismiss="modal" onClick={e => setToggle2(!toggle2)}>{toggle2 ? 'Sign Up' : 'Login'}</a>
+        </p>
+      </ModalFooter>       
       </Modal>
     </div>
   );
