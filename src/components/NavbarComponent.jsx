@@ -20,7 +20,7 @@ const NavbarComponent = (props) => {
 
   const toggle = () => setIsOpen(!isOpen);
   return (
-    <Navbar color="light" light expand="md" className="nav-fill w-100">
+    <Navbar light expand="md" className="nav-fill w-100 navbar">
       <NavbarBrand href="/" className="ml-auto">BiblioQuest</NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>

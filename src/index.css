@@ -21,6 +21,8 @@ code {
   height: 90vh;
   overflow: hidden;
   position: relative;
+  background-color: #b4b274;
+  color: #8d6657;
 }
 
 .mainContainer {
@@ -33,6 +35,11 @@ code {
   overflow: hidden;
   height: 90%;
   width: 90%;
+  
+}
+
+.navbarToggler {
+  color: #b4b274;
 }
 
 .navRow {
@@ -42,6 +49,7 @@ code {
   left: 15px;
   border: 2px dashed blue;
   width: 100%;
+  background-color: #c89980;
 }
 
 .col {
@@ -50,10 +58,12 @@ code {
   border: 2px dashed black;
   text-align: center;
   width: 90vw;
+  background-color: #dec8a0;
 }
 
 .colOne .colThree {
   width: 15%;
+  background-color: #714938;
 }
 
 .rowOne {
@@ -65,14 +75,26 @@ code {
 
 .popBookCarousel {
   height: 200px;
+  color: #463d19 ;
+}
+
+.mid3Boxes {
+  background-color: #463d19;
 }
 
 .infoCard {
   height: 150px;
+  color: #c89980 ;
+  background-color: #714938;
 }
 
 .catOfTheDay {
   height: 200px;
+}
+
+.catBoxOfTheDay {
+  background-color: #b4b274;
+  color: #463d19 ;
 }
 
 .footer {
@@ -81,12 +103,11 @@ code {
   bottom: 0;
   left: 15px;
   border: 2px dashed purple;
-  width: 100%
+  width: 100%;
+  background-color: #c89980;
+  color: #463d19 ;
 }
 
-.colFooter {
-  
-}
 
 .modal-dialog {
   height: 100%;

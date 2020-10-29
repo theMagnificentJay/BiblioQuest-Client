@@ -1,10 +1,10 @@
 import React from "react";
-import { Container, Row, Col, Nav, Navbar } from "reactstrap";
+import {Row} from "reactstrap";
 
 const FooterComponent = (props) => {
   return (
     <Row className="footer">
-      Footer
+      &copy;{new Date().getFullYear()} BiblioQuest 
     </Row>
   );
 };

@@ -35,16 +35,16 @@ function App() {
               <Col>Popular/Selected_Category</Col>
             </Row>
             <Row className="infoCard">
-              <Col className="col" xs="2">
+              <Col className="col mid3Boxes" xs="2">
                 .col_1
               </Col>
-              <Col>Info_Card</Col>
-              <Col className="col" xs="2">
+              <Col className="col mid3Boxes">Info_Card</Col>
+              <Col className="col mid3Boxes" xs="2">
                 .col_3
               </Col>
             </Row>
             <Row className="catOfTheDay">
-              <Col>Category_of_the_Day</Col>
+              <Col className="catBoxOfTheDay">Category_of_the_Day</Col>
             </Row>
           </Col>
           <Col className="colThree col" xs="2">
