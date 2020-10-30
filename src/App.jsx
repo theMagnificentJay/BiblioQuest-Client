@@ -16,13 +16,13 @@ function App() {
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
           <Col className="colOne col rb" xs="2">
-            blank_space
+            {/*blank_space*/}
           </Col>
           <Col className="colTwo colColor rb">
             <Search />
           </Col>
           <Col className="colThree col rb" xs="2">
-            blank_space
+            {/*blank_space*/}
           </Col>
         </Row>
         <Row className="rowOne row rb">
@@ -31,15 +31,15 @@ function App() {
           </Col>
           <Col className="colTwo brownBG rb">
             <Row className="popBookCarousel rb">
-              <Col className="colColor rb">Popular/Selected_Category</Col>
+              <Col id="displaySearchContent" className="colColor rb">Popular/Selected_Category</Col>
             </Row>
             <Row className="infoCard">
               <Col className="col" xs="2">
-                .col_1
+                {/*.col_1*/}
               </Col>
               <Col className="col colColor rb">Info_Card</Col>
               <Col className="col rb" xs="2">
-                .col_3
+                {/*.col_3*/}
               </Col>
             </Row>
             <Row className="catOfTheDay rb">
