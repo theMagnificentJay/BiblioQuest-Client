@@ -47,7 +47,7 @@ function App() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb" xs="2">
-            .col_3
+            My_List
           </Col>
         </Row>
       </Container>
