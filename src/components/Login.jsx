@@ -14,7 +14,7 @@ const Login = (props) => {
           <Label for="email" className="sr-only" />
           <Input
             type="email"
-            class="form-control"
+            className="form-control"
             id="email"
             placeholder="Email Address"
           />
@@ -24,7 +24,7 @@ const Login = (props) => {
           <Label for="password" className="sr-only" />
           <Input
             type="password"
-            class="form-control"
+            className="form-control"
             id="password"
             placeholder="Password"
           />

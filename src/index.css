@@ -1,14 +1,14 @@
 body {
   margin: auto;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -35,7 +35,6 @@ code {
   overflow: hidden;
   height: 90%;
   width: 90%;
-  
 }
 
 .navRow {
@@ -74,7 +73,7 @@ code {
 
 .popBookCarousel {
   height: 200px;
-  color: #463d19 ;
+  color: #463d19;
 }
 
 .brownBG {
@@ -92,7 +91,6 @@ code {
 .catBoxOfTheDay {
   color: #463d19;
   background-color: #dec8a0;
-  
 }
 
 .footer {
@@ -103,7 +101,7 @@ code {
   border: 1px solid black;
   width: 100%;
   background-color: #c89980;
-  color: #463d19 ;
+  color: #463d19;
 }
 
 .remove-all-styles {

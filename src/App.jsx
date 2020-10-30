@@ -31,7 +31,9 @@ function App() {
           </Col>
           <Col className="colTwo brownBG rb">
             <Row className="popBookCarousel rb">
-              <Col id="displaySearchContent" className="colColor rb">Popular/Selected_Category</Col>
+              <Col id="displaySearchContent" className="colColor rb">
+                Popular/Selected_Category
+              </Col>
             </Row>
             <Row className="infoCard">
               <Col className="col" xs="2">
