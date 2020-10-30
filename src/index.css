@@ -16,11 +16,13 @@ code {
   margin: auto;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  border: 2px solid green;
+  border: 1px solid black;
   width: 95vw;
   height: 90vh;
   overflow: hidden;
   position: relative;
+  background-color: #b4b274;
+  color: #8d6657;
 }
 
 .mainContainer {
@@ -29,10 +31,11 @@ code {
   margin-top: 6vh;
   margin-left: 5%;
   padding: 10px;
-  border: 1px dashed yellowgreen;
+  /* border: 1px solid black; */
   overflow: hidden;
   height: 90%;
   width: 90%;
+  
 }
 
 .navRow {
@@ -40,20 +43,26 @@ code {
   position: absolute;
   top: 0;
   left: 15px;
-  border: 2px dashed blue;
+  border: 1px solid black;
   width: 100%;
+  background-color: #c89980;
 }
 
 .col {
   margin: 10px;
   padding: 10px;
-  border: 2px dashed black;
+  border: 1px solid black;
   text-align: center;
   width: 90vw;
 }
 
+.colColor {
+  background-color: #dec8a0;
+}
+
 .colOne .colThree {
   width: 15%;
+  /* background-color: #714938; */
 }
 
 .rowOne {
@@ -65,6 +74,11 @@ code {
 
 .popBookCarousel {
   height: 200px;
+  color: #463d19 ;
+}
+
+.brownBG {
+  background-color: #463d19;
 }
 
 .infoCard {
@@ -75,13 +89,21 @@ code {
   height: 200px;
 }
 
+.catBoxOfTheDay {
+  color: #463d19;
+  background-color: #dec8a0;
+  
+}
+
 .footer {
   margin: 0 auto;
   position: absolute;
   bottom: 0;
   left: 15px;
-  border: 2px dashed purple;
-  width: 100%
+  border: 1px solid black;
+  width: 100%;
+  background-color: #c89980;
+  color: #463d19 ;
 }
 
 .remove-all-styles {
@@ -113,7 +135,6 @@ code {
   cursor: pointer;
 }
 
-.searchComponent {
-  margin: 0 auto;
-  width: 90%;
+.rb {
+  border-radius: 5px;
 }
