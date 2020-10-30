@@ -9,44 +9,44 @@ import { Container, Row, Col } from "reactstrap";
 
 function App() {
   return (
-    <Container className="masterContainer" fluid="?">
+    <Container className="masterContainer rb" fluid="?">
       <Row className="navRow">
         <NavbarComponent />
       </Row>
-      <Container className="mainContainer" fluid="?">
-        <Row className="topRow row">
-          <Col className="colOne col" xs="2">
+      <Container className="mainContainer rb" fluid="?">
+        <Row className="topRow row rb">
+          <Col className="colOne col rb" xs="2">
             blank_space
           </Col>
-          <Col className="colTwo">
+          <Col className="colTwo colColor rb">
             <Search />
           </Col>
-          <Col className="colThree col" xs="2">
+          <Col className="colThree col rb" xs="2">
             blank_space
           </Col>
         </Row>
-        <Row className="rowOne row">
-          <Col className="colOne col" xs="2">
+        <Row className="rowOne row rb">
+          <Col className="colOne col colColor rb" xs="2">
             Categories
           </Col>
-          <Col className="colTwo">
-            <Row className="popBookCarousel">
-              <Col>Popular/Selected_Category</Col>
+          <Col className="colTwo brownBG rb">
+            <Row className="popBookCarousel rb">
+              <Col className="colColor rb">Popular/Selected_Category</Col>
             </Row>
             <Row className="infoCard">
-              <Col className="col mid3Boxes" xs="2">
+              <Col className="col" xs="2">
                 .col_1
               </Col>
-              <Col className="col mid3Boxes">Info_Card</Col>
-              <Col className="col mid3Boxes" xs="2">
+              <Col className="col colColor rb">Info_Card</Col>
+              <Col className="col rb" xs="2">
                 .col_3
               </Col>
             </Row>
-            <Row className="catOfTheDay">
-              <Col className="catBoxOfTheDay">Category_of_the_Day</Col>
+            <Row className="catOfTheDay rb">
+              <Col className="catBoxOfTheDay rb">Category_of_the_Day</Col>
             </Row>
           </Col>
-          <Col className="colThree col" xs="2">
+          <Col className="colThree col colColor rb" xs="2">
             .col_3
           </Col>
         </Row>

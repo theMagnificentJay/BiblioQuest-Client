@@ -16,7 +16,7 @@ code {
   margin: auto;
   margin-top: 5vh;
   margin-bottom: 5vh;
-  border: 2px solid green;
+  border: 1px solid black;
   width: 95vw;
   height: 90vh;
   overflow: hidden;
@@ -31,21 +31,19 @@ code {
   margin-top: 6vh;
   margin-left: 5%;
   padding: 10px;
-  border: 1px dashed yellowgreen;
+  /* border: 1px solid black; */
   overflow: hidden;
   height: 90%;
   width: 90%;
   
 }
 
-
-
 .navRow {
   margin: 0 auto;
   position: absolute;
   top: 0;
   left: 15px;
-  border: 2px dashed blue;
+  border: 1px solid black;
   width: 100%;
   background-color: #c89980;
 }
@@ -53,15 +51,18 @@ code {
 .col {
   margin: 10px;
   padding: 10px;
-  border: 2px dashed black;
+  border: 1px solid black;
   text-align: center;
   width: 90vw;
+}
+
+.colColor {
   background-color: #dec8a0;
 }
 
 .colOne .colThree {
   width: 15%;
-  background-color: #714938;
+  /* background-color: #714938; */
 }
 
 .rowOne {
@@ -76,14 +77,12 @@ code {
   color: #463d19 ;
 }
 
-.mid3Boxes {
+.brownBG {
   background-color: #463d19;
 }
 
 .infoCard {
   height: 150px;
-  color: #c89980 ;
-  background-color: #714938;
 }
 
 .catOfTheDay {
@@ -91,8 +90,9 @@ code {
 }
 
 .catBoxOfTheDay {
-  background-color: #b4b274;
-  color: #463d19 ;
+  color: #463d19;
+  background-color: #dec8a0;
+  
 }
 
 .footer {
@@ -100,18 +100,15 @@ code {
   position: absolute;
   bottom: 0;
   left: 15px;
-  border: 2px dashed purple;
+  border: 1px solid black;
   width: 100%;
   background-color: #c89980;
   color: #463d19 ;
 }
 
-<<<<<<< HEAD
-=======
 .remove-all-styles {
   all: revert;
 }
->>>>>>> Login/Register Modal implementation
 
 .modal-dialog {
   height: 100%;
@@ -138,7 +135,6 @@ code {
   cursor: pointer;
 }
 
-.searchComponent {
-  margin: 0 auto;
-  width: 90%;
+.rb {
+  border-radius: 5px;
 }
