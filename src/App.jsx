@@ -1,10 +1,7 @@
 import React from "react";
 import "./App.css";
 
-import Login from "./components/Login";
-import Register from "./components/Register";
 import Search from "./components/Search";
-import DefaultBookList from "./components/DefaultBookList";
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
 
@@ -21,7 +18,9 @@ function App() {
           <Col className="colOne col" xs="2">
             blank_space
           </Col>
-          <Col className="colTwo">Search Bar</Col>
+          <Col className="colTwo">
+            <Search />
+          </Col>
           <Col className="colThree col" xs="2">
             blank_space
           </Col>

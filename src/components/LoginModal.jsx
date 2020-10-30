@@ -33,7 +33,7 @@ const LoginModal = (props) => {
         <ModalFooter>
         <p>
           {toggle2 ? "Don't have an account?" : "Already have an account?"}{" "}
-          <a className="modalFooterLink" data-toggle="modal" data-dismiss="modal" onClick={e => setToggle2(!toggle2)}>{toggle2 ? 'Sign Up' : 'Login'}</a>
+          <Button className="modalFooterLink" data-toggle="modal" data-dismiss="modal" onClick={e => setToggle2(!toggle2)}>{toggle2 ? 'Sign Up' : 'Login'} </Button>
         </p>
       </ModalFooter>       
       </Modal>
