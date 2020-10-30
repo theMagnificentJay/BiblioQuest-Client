@@ -1,15 +1,16 @@
 import React from "react";
+import { Container } from 'reactstrap';
 
 const BookCard = (props) => {
   return (
-    <div className="card-container">
+    <Container className="card-container">
       <img src={props.image} alt="" />
-      <div className="desc">
+      <Container className="desc">
         <h2>{props.title}</h2>
         <h3>{props.author}</h3>
         <p>{props.publishedDate}</p>
-      </div>
-    </div>
+      </Container>
+    </Container>
   );
 };
 
