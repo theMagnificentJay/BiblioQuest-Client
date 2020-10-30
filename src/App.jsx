@@ -16,13 +16,13 @@ function App() {
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
           <Col className="colOne col rb" xs="2">
-            blank_space
+            {/*blank_space*/}
           </Col>
           <Col className="colTwo colColor rb">
             <Search />
           </Col>
           <Col className="colThree col rb" xs="2">
-            blank_space
+            {/*blank_space*/}
           </Col>
         </Row>
         <Row className="rowOne row rb">
@@ -35,11 +35,11 @@ function App() {
             </Row>
             <Row className="infoCard">
               <Col className="col" xs="2">
-                .col_1
+                {/*.col_1*/}
               </Col>
               <Col className="col colColor rb">Info_Card</Col>
               <Col className="col rb" xs="2">
-                .col_3
+                {/*.col_3*/}
               </Col>
             </Row>
             <Row className="catOfTheDay rb">
@@ -47,7 +47,7 @@ function App() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb" xs="2">
-            .col_3
+            My_List
           </Col>
         </Row>
       </Container>
