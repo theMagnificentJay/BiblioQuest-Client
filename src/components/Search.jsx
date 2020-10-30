@@ -10,6 +10,11 @@ const Search = (props) => {
             placeholder="Search author, book title, genre, etc."/>
         <InputGroupAddon addonType="append">
           <Button color="secondary">Search</Button>
+
+          <Button type="search"id="Add button">Add</Button>
+
+
+
         </InputGroupAddon>
       </InputGroup>
   );
