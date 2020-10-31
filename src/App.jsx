@@ -28,7 +28,7 @@ function App() {
           </Col>
         </Row>
         <Row className="rowOne row rb">
-          <Col className="colOne col colColor rb bsb" xs="2">
+          <Col className="colOne col colColor rb bsb" xs="2" style={{zIndex: "2"}}>
             <Categories />
           </Col>
           <Col className="colTwo brownBG rb">
