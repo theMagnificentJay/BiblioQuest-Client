@@ -14,7 +14,7 @@ const Register = (props) => {
           <Label for="email" className="sr-only" />
           <Input
             type="email"
-            class="form-control"
+            className="form-control"
             id="email"
             placeholder="Email Address"
           />
@@ -24,7 +24,7 @@ const Register = (props) => {
           <Label for="password" className="sr-only" />
           <Input
             type="password"
-            class="form-control"
+            className="form-control"
             id="password"
             placeholder="Choose a password"
           />
@@ -34,7 +34,7 @@ const Register = (props) => {
           <Label for="password2" className="sr-only"/>
           <Input
             type="password"
-            class="form-control"
+            className="form-control"
             id="password2"
             placeholder="Confirm password"
           />
