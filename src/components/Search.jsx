@@ -15,11 +15,47 @@ const Search = (props) => {
 
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
 
+  function searchAuthor()  {
+    var searchInput = document.getElementById('searchInput').value;
+    var searchAuthor = "inauthor:";
+    
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + searchAuthor + searchInput + '&maxResults=40&printType=books')
+      .then(response => response.json())
+      .then(data => console.log(data.items));
+  }
+
+  function searchGenre()  {
+    var searchInput = document.getElementById('searchInput').value;
+    var searchGenre = "subject:";
+    
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + searchGenre + searchInput + '&maxResults=40&printType=books')
+      .then(response => response.json())
+      .then(data => console.log(data.items));
+  }
+
+  function searchTitle()  {
+    var searchInput = document.getElementById('searchInput').value;
+    var searchTitle = "intitle:";
+    
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + searchTitle + searchInput + '&maxResults=40&printType=books')
+      .then(response => response.json())
+      .then(data => console.log(data.items));
+  }
+
+  function searchPublisher()  {
+    var searchInput = document.getElementById('searchInput').value;
+    var searchPublisher = "inPublisher:";
+    
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + searchPublisher + searchInput + '&maxResults=40&printType=books')
+      .then(response => response.json())
+      .then(data => console.log(data.items));
+  }
+
   return (
     <InputGroup>
       <Input
         class="form-control"
-        id="searchComponent"
+        id="searchInput"
         placeholder="Search author, genre, title, or publisher . . ."
       />
       <InputGroupAddon addonType="append">
@@ -30,10 +66,10 @@ const Search = (props) => {
         >
           <DropdownToggle caret>Search</DropdownToggle>
           <DropdownMenu>
-            <DropdownItem>Author</DropdownItem>
-            <DropdownItem>Genre</DropdownItem>
-            <DropdownItem>Title</DropdownItem>
-            <DropdownItem>Publisher</DropdownItem>
+            <DropdownItem className="searchAuthor" onClick={ e => searchAuthor()}>Author</DropdownItem>
+            <DropdownItem className="searchGenre" onClick={ e => searchGenre()}>Genre</DropdownItem>
+            <DropdownItem className="searchTitle" onClick={ e => searchTitle()}>Title</DropdownItem>
+            <DropdownItem className="searchPublisher" onClick={ e => searchPublisher()}>Publisher</DropdownItem>
           </DropdownMenu>
         </InputGroupButtonDropdown>
       </InputGroupAddon>
