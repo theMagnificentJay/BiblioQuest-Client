@@ -54,7 +54,7 @@ const Search = (props) => {
   return (
     <InputGroup>
       <Input
-        class="form-control"
+        className="form-control"
         id="searchInput"
         placeholder="Search author, genre, title, or publisher . . ."
       />

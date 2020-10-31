@@ -9,7 +9,7 @@ import { Container, Row, Col } from "reactstrap";
 
 function App() {
   return (
-    <Container className="masterContainer rb" fluid="?">
+    <Container className="masterContainer rb bsb" fluid="?">
       <Row className="navRow">
         <NavbarComponent />
       </Row>
@@ -18,7 +18,7 @@ function App() {
           <Col className="colOne col rb" xs="2">
             {/*blank_space*/}
           </Col>
-          <Col className="colTwo colColor rb">
+          <Col className="colTwo colColor rb bsb">
             <Search />
           </Col>
           <Col className="colThree col rb" xs="2">
@@ -26,12 +26,12 @@ function App() {
           </Col>
         </Row>
         <Row className="rowOne row rb">
-          <Col className="colOne col colColor rb" xs="2">
+          <Col className="colOne col colColor rb bsb" xs="2">
             Categories
           </Col>
           <Col className="colTwo brownBG rb">
             <Row className="popBookCarousel rb">
-              <Col id="displaySearchContent" className="colColor rb">
+              <Col id="displaySearchContent" className="colColor rb bsb">
                 Popular/Selected_Category
               </Col>
             </Row>
@@ -39,16 +39,16 @@ function App() {
               <Col className="col" xs="2">
                 {/*.col_1*/}
               </Col>
-              <Col className="col colColor rb">Info_Card</Col>
+              <Col className="col colColor rb bsb">Info_Card</Col>
               <Col className="col rb" xs="2">
                 {/*.col_3*/}
               </Col>
             </Row>
             <Row className="catOfTheDay rb">
-              <Col className="catBoxOfTheDay rb">Category_of_the_Day</Col>
+              <Col className="catBoxOfTheDay rb bsb">Category_of_the_Day</Col>
             </Row>
           </Col>
-          <Col className="colThree col colColor rb" xs="2">
+          <Col className="colThree col colColor rb bsb" xs="2">
             My_List
           </Col>
         </Row>
