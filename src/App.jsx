@@ -4,12 +4,14 @@ import "./App.css";
 import Search from "./components/Search";
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
+import Categories from "./components/Categories";
 
 import { Container, Row, Col } from "reactstrap";
 
 function App() {
   return (
     <Container className="masterContainer rb bsb" fluid="?">
+      <div className="bookRibbon" />
       <Row className="navRow">
         <NavbarComponent />
       </Row>
@@ -27,7 +29,7 @@ function App() {
         </Row>
         <Row className="rowOne row rb">
           <Col className="colOne col colColor rb bsb" xs="2">
-            Categories
+            <Categories />
           </Col>
           <Col className="colTwo brownBG rb">
             <Row className="popBookCarousel rb">
