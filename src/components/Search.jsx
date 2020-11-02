@@ -15,6 +15,14 @@ const Search = (props) => {
 
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
 
+  function searchAll()  {
+    var searchInput = document.getElementById('searchInput').value;
+    
+    fetch('https://www.googleapis.com/books/v1/volumes?q=' + searchInput + '&maxResults=40&printType=books')
+      .then(response => response.json())
+      .then(data => console.log(data.items));
+  }
+  
   function searchAuthor()  {
     var searchInput = document.getElementById('searchInput').value;
     var searchAuthor = "inauthor:";
@@ -66,6 +74,7 @@ const Search = (props) => {
         >
           <DropdownToggle caret>Search</DropdownToggle>
           <DropdownMenu>
+            <DropdownItem className="searchAll" onClick={ e => searchAll()}>All</DropdownItem>
             <DropdownItem className="searchAuthor" onClick={ e => searchAuthor()}>Author</DropdownItem>
             <DropdownItem className="searchGenre" onClick={ e => searchGenre()}>Genre</DropdownItem>
             <DropdownItem className="searchTitle" onClick={ e => searchTitle()}>Title</DropdownItem>
