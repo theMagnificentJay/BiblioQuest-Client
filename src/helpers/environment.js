@@ -9,7 +9,7 @@ switch(window.location.hostname) {
     // this is the deployed react application
     case 'biblioquest--client.herokuapp.com':
         //this is the full url of your deployed API
-        APIURL = 'https://biblioquest--client.herokuapp.com'
+        APIURL = ''
 }
 
 
