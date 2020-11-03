@@ -1,16 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import Search from "./components/Search";
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
 import Categories from "./components/Categories";
-import UserList from "./components/UserList";
+import UserList from "./components/userLists/UserList";
 
 import { Container, Row, Col } from "reactstrap";
 
 function App() {
   const [token, setToken] = useState("");
+
+  useEffect(async () => {
+    if (localStorage.getItem("token")) {
+      await setToken(localStorage.getItem("token"));
+    }
+  }, []);
 
   const updateToken = (newToken) => {
     localStorage.setItem("token", newToken);
@@ -64,7 +70,7 @@ function App() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb bsb" xs="2">
-            <UserList />
+            <UserList token={token} />
           </Col>
         </Row>
       </Container>
