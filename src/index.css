@@ -145,7 +145,7 @@ code {
 }
 
 .categoryScroll {
-  position: relative;
+  position: absolute;
   height: 85%;
   overflow-y: scroll;
   text-align: left;
