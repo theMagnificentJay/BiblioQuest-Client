@@ -1,12 +1,6 @@
-import React, { useState } from 'react';
-import LoginModal from './LoginModal';
-import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav
-} from 'reactstrap';
+import React, { useState } from "react";
+import LoginModal from "./LoginModal";
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from "reactstrap";
 
 const NavbarComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,15 +8,17 @@ const NavbarComponent = (props) => {
   const toggle = () => setIsOpen(!isOpen);
   return (
     <Navbar light expand="md" className="nav-fill w-100 navbar">
-      <NavbarBrand href="/" className="ml-auto" style={{zIndex: "2"}}>BiblioQuest</NavbarBrand>
+      <NavbarBrand href="/" className="ml-auto" style={{ zIndex: "2" }}>
+        BiblioQuest
+      </NavbarBrand>
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <LoginModal />
+          <LoginModal updateToken={props.updateToken} />
         </Nav>
       </Collapse>
     </Navbar>
-  )
+  );
 };
 
 export default NavbarComponent;

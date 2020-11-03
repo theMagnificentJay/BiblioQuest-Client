@@ -1,19 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 import Search from "./components/Search";
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
 import Categories from "./components/Categories";
+import UserList from "./components/userLists/UserList";
 
 import { Container, Row, Col } from "reactstrap";
 
 function App() {
+  const [token, setToken] = useState("");
+
+  useEffect(async () => {
+    if (localStorage.getItem("token")) {
+      await setToken(localStorage.getItem("token"));
+    }
+  }, []);
+
+  const updateToken = (newToken) => {
+    localStorage.setItem("token", newToken);
+    setToken(newToken);
+    console.log(newToken);
+  };
+
   return (
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent />
+        <NavbarComponent updateToken={updateToken} />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -28,7 +43,11 @@ function App() {
           </Col>
         </Row>
         <Row className="rowOne row rb">
-          <Col className="colOne col colColor rb bsb" xs="2" style={{zIndex: "2"}}>
+          <Col
+            className="colOne col colColor rb bsb"
+            xs="2"
+            style={{ zIndex: "2" }}
+          >
             <Categories />
           </Col>
           <Col className="colTwo brownBG rb">
@@ -51,7 +70,7 @@ function App() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb bsb" xs="2">
-            My_List
+            <UserList token={token} />
           </Col>
         </Row>
       </Container>
