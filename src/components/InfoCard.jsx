@@ -1,15 +1,13 @@
 import React from "react";
-import "./App.css";
-
 import { Container } from "reactstrap";
-import Layout from "./components/Layout";
+// import "./App.css";
 
-function App() {
+function InfoCard() {
   return (
     <Container>
-      <Layout />
+      <p>Hi!</p>
     </Container>
   );
 }
 
-export default App;
+export default InfoCard;
