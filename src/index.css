@@ -145,12 +145,12 @@ code {
 }
 
 .categoryScroll {
-  position: absolute;
+  position: relative;
   height: 85%;
   overflow-y: scroll;
   text-align: left;
   padding-left: 10px;
-  padding-right: 60px;
+  padding-right: 90px;
   margin-right: 10px;
 }
 
@@ -160,7 +160,7 @@ code {
 
 .categoryScroll p:hover, .categoryScroll h5:hover {
   text-decoration: underline;
-  font-style: italic;
+  font-style: oblique;
 }
 
 .bookRibbon {

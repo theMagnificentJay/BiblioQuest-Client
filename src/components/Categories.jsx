@@ -126,25 +126,25 @@ const Categories = (props) => {
         <p>Staff List</p>
         <p>Popular</p>
         <br />
-        <h5 onClick={e => filterFiction()}>Fiction</h5>
+        <h5 onClick={(e) => filterFiction()}>Fiction</h5>
         <hr />
         <p onClick={(e) => filterFictionYoungAdult()}>Young Adult</p>
         <p onClick={(e) => filterFictionFantasy()}>Fantasy</p>
         <p onClick={(e) => filterFictionChildren()}>Children’s</p>
-        <p onClick={e => filterFictionScifi()}>Science Fiction</p>
-        <p onClick={e => filterFictionThriller}>Thrillers/Suspense</p>
-        <p onClick={e => filterFictionHorror}>Horror</p>
-        <p onClick={e => filterFictionRomance()}>Romance</p>
+        <p onClick={(e) => filterFictionScifi()}>Science Fiction</p>
+        <p onClick={(e) => filterFictionThriller}>Thrillers/Suspense</p>
+        <p onClick={(e) => filterFictionHorror}>Horror</p>
+        <p onClick={(e) => filterFictionRomance()}>Romance</p>
         <br />
-        <h5 onClick={e => filterNonFiction()}>Non-Fiction</h5>
+        <h5 onClick={(e) => filterNonFiction()}>Non-Fiction</h5>
         <hr />
-        <p onClick={e => filterNonFictionEducational()}>Educational</p>
-        <p onClick={e => filterNonFictionHistorical()}>Historical</p>
-        <p onClick={e => filterNonFictionSelfHelp()}>Self-help</p>
-        <p onClick={e => filterNonFictionReligion()}>Religion/Spirituality</p>
-        <p onClick={e => filterNonFictionBiography()}>Biography</p>
-        <p onClick={e => filterNonFictionHistory()}>History</p>
-        <p onClick={e => filterNonFictionHealth()}>Health and Fitness</p>
+        <p onClick={(e) => filterNonFictionEducational()}>Educational</p>
+        <p onClick={(e) => filterNonFictionHistorical()}>Historical</p>
+        <p onClick={(e) => filterNonFictionSelfHelp()}>Self-help</p>
+        <p onClick={(e) => filterNonFictionReligion()}>Religion/Spirituality</p>
+        <p onClick={(e) => filterNonFictionBiography()}>Biography</p>
+        <p onClick={(e) => filterNonFictionHistory()}>History</p>
+        <p onClick={(e) => filterNonFictionHealth()}>Health and Fitness</p>
       </div>
     </div>
   );
