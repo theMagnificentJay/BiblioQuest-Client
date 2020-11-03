@@ -1,2 +1,0 @@
-## BiblioQuest-Client
-
