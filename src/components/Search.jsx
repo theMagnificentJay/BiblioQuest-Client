@@ -12,6 +12,7 @@ import {
 
 const Search = (props) => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [results, showResults] = useState([]);
   
   const toggleDropDown = () => setDropdownOpen(!dropdownOpen);
   
@@ -24,9 +25,11 @@ const Search = (props) => {
         "&maxResults=40&printType=books"
     )
       .then((response) => response.json())
-      .then((data) => console.log(data.items))
+      .then(res => {
+       showResults(res.items);       
+      })
   }
-  
+  console.log(results.length > 0 ? results[0].volumeInfo.imageLinks.thumbnail : null);
 
   function searchAuthor() {
     const searchInput = document.getElementById("searchInput").value;
