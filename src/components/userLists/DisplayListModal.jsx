@@ -54,10 +54,7 @@ const DisplayListContent = (props) => {
       .then((res) => res.json())
       .then((res) => {
         setDeleteResponse(res.message);
-<<<<<<< HEAD
-=======
         props.componentRefresher(res.message);
->>>>>>> 1f9a85071f55c9a8f38513c728a47b06d44e468b
         // toggle();
       })
       .catch((err) => {
@@ -79,19 +76,11 @@ const DisplayListContent = (props) => {
       .then((res) => {
         setUpdateResponse(res.message);
         toggle();
-<<<<<<< HEAD
-      });
-    // .catch((err) => {
-    //   setErr(err);
-    //   console.log(err);
-    // });
-=======
       })
       .catch((err) => {
         setErr(err);
         console.log(err);
       });
->>>>>>> 1f9a85071f55c9a8f38513c728a47b06d44e468b
   };
 
   return (
