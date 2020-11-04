@@ -13,9 +13,7 @@ function Layout() {
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=" +
-        searchInput +
-        "&maxResults=40&printType=books"
+      `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=40&printType=books`
     )
       .then((response) => response.json())
       .then((res) => {
@@ -105,6 +103,9 @@ function Layout() {
                   Non-Fiction
                 </h5>
                 <hr />
+                <p onClick={(e) => filterBook("subject:art")}>
+                  Art
+                </p>
                 <p onClick={(e) => filterBook("subject:education")}>
                   Educational
                 </p>
