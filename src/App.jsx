@@ -11,7 +11,7 @@ import Search from "./components/Search";
 import NavbarComponent from "./components/NavbarComponent";
 import Footer from "./components/Footer";
 import Categories from "./components/Categories";
-import UserList from "./components/userLists/UserList";
+import UserListMenu from "./components/userLists/UserListMenu";
 
 import { Container, Row, Col } from "reactstrap";
 
@@ -76,7 +76,7 @@ function App() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb bsb" xs="2">
-            <UserList token={token} />
+            <UserListMenu token={token} />
           </Col>
         </Row>
       </Container>
