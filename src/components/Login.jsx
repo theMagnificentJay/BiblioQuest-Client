@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Container, Label, Input } from "reactstrap";
+import { Button, Container, Label, Input, Form } from "reactstrap";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -24,25 +24,30 @@ const Login = (props) => {
     <Container>
       <Container className="inputs">
         <Container className="form-group input-group">
+          <Form className="form-group input-group">
           <Label for="email" className="sr-only" />
-          <Input
-            onChange={(e) => setEmail(e.target.value)}
-            type="email"
-            className="form-control"
-            id="email"
-            placeholder="Email Address"
-          />
+            <Input
+              onChange={(e) => setEmail(e.target.value)}
+              type="email"
+              className="form-control"
+              id="email"
+              placeholder="Email Address" required="true"
+            />
+          </Form>
         </Container>
 
         <Container className="form-group input-group">
-          <Label for="password" className="sr-only" />
-          <Input
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Password"
-          />
+          <Form className="form-group input-group">
+            <Label for="password" className="sr-only" />
+            <Input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Password"
+              required
+            />
+          </Form>  
         </Container>
       </Container>
       <Container className="footerLoginModal text-center">
