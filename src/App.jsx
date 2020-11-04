@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
@@ -77,6 +78,14 @@ function App() {
       <Footer />
     </Container>
   );
+=======
+import React from "react";
+
+import Layout from "./components/Layout";
+
+function App() {
+  return <Layout />;
+>>>>>>> 05782a76f5c5f4aac867e4edb92eabab7925146d
 }
 
 export default App;

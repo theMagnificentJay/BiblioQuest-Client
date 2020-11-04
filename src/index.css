@@ -74,8 +74,10 @@ code {
 }
 
 .popBookCarousel {
-  height: 240px;
+  position: relative;
+  height: 100%;
   color: #463d19;
+  overflow: hidden;
 }
 
 .brownBG {
@@ -145,9 +147,10 @@ code {
 }
 
 .categoryScroll {
-  position: relative;
+  position: absolute;
   height: 85%;
   overflow-y: scroll;
+  overflow-x: hidden;
   text-align: left;
   padding-left: 10px;
   padding-right: 90px;
@@ -177,4 +180,13 @@ code {
 .categoryScrollContainer h5,
 .categoryScrollContainer h4 {
   color: rgba(50, 50, 50);
+}
+
+.displayBooks {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  min-height: 62vh;
+  max-height: 62vh;
+  overflow-y: scroll;
 }
