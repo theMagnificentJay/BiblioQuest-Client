@@ -1,25 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { Route, Link, Switch } from "react-router-dom";
 import { Button } from "reactstrap";
-import { BrowserRouter as Router } from "react-router-dom";
-import ListRouter from "./ListRouter";
+// import { BrowserRouter as Router } from "react-router-dom";
+import ListModals from "./ListModals";
 import CreateListModal from "./CreateListModal";
 
 // App component
 function UserList(props) {
   const [token, setToken] = useState("");
+  const [componentRefresh, setComponentRefresh] = useState("");
 
-  // useEffect(() => {
-  //   setToken(localStorage.getItem("token"));
-  // }, []);
+  const componentRefresher = (value) => {
+    setComponentRefresh(value);
+  };
 
   return props.token ? (
     <div className="">
       <>
         <CreateListModal token={props.token} />
-        <Router>
-          <ListRouter token={props.token} />
-        </Router>
+        <ListModals
+          token={props.token}
+          componentRefresher={componentRefresher}
+        />
       </>
     </div>
   ) : (
