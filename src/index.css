@@ -74,8 +74,10 @@ code {
 }
 
 .popBookCarousel {
-  height: 240px;
+  position: relative;
+  height: 100%;
   color: #463d19;
+  overflow: hidden;
 }
 
 .brownBG {
@@ -150,7 +152,7 @@ code {
   overflow-y: scroll;
   text-align: left;
   padding-left: 10px;
-  padding-right: 60px;
+  padding-right: 90px;
   margin-right: 10px;
 }
 
@@ -160,7 +162,7 @@ code {
 
 .categoryScroll p:hover, .categoryScroll h5:hover {
   text-decoration: underline;
-  font-style: italic;
+  font-style: oblique;
 }
 
 .bookRibbon {
@@ -177,4 +179,12 @@ code {
 .categoryScrollContainer h5,
 .categoryScrollContainer h4 {
   color: rgba(50, 50, 50);
+}
+
+.displayBooks {
+  display: flex;
+  flex-wrap: wrap;
+  position: fixed;
+  height: 97.5%;
+  overflow-y: scroll;
 }
