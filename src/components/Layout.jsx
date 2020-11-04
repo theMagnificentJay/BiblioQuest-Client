@@ -3,10 +3,11 @@ import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
 
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
+import UserListMenu from "./userLists/UserListMenu";
 
 import { Container, Row, Col } from "reactstrap";
 
-function Layout() {
+function Layout(props) {
   const [results, showResults] = useState([]);
 
   function searchAll() {
@@ -39,7 +40,7 @@ function Layout() {
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent />
+        <NavbarComponent updateToken={props.updateToken} />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -126,21 +127,25 @@ function Layout() {
               <Col
                 id="displaySearchContent"
                 className="displayBooks colColor rb bsb"
-                style={{ margin: "25px", padding: "10px", msOverflowY: "scroll" }}
+                style={{
+                  margin: "25px",
+                  padding: "10px",
+                  msOverflowY: "scroll",
+                }}
               >
                 {results.length > 0 ? (
                   results.map((bookItem) => {
                     return (
-                      <div style={{margin: "10px auto",}}>
-                      <div>
-                        <div className="card-container">
-                          <img
-                            src={bookItem.volumeInfo.imageLinks.thumbnail}
-                            alt=""
-                          />
+                      <div style={{ margin: "10px auto" }}>
+                        <div>
+                          <div className="card-container">
+                            <img
+                              src={bookItem.volumeInfo.imageLinks.thumbnail}
+                              alt=""
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
                     );
                   })
                 ) : (
@@ -152,7 +157,7 @@ function Layout() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb bsb" xs="2">
-            My_List
+            <UserListMenu token={props.token} />
           </Col>
         </Row>
       </Container>

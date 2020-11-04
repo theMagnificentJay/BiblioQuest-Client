@@ -5,6 +5,7 @@ import DisplayListModal from "./DisplayListModal";
 
 const ListRouter = (props) => {
   const [lists, setLists] = useState([]);
+  const [err, setErr] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3030/list/allLists", {
@@ -17,6 +18,9 @@ const ListRouter = (props) => {
       .then((res) => res.json())
       .then((listData) => {
         setLists(listData);
+      })
+      .catch((err) => {
+        setErr(err);
       });
   }, []);
 
@@ -31,8 +35,10 @@ const ListRouter = (props) => {
               </div>
             );
           })
+        ) : err ? (
+          <p>{err}</p>
         ) : (
-          <></>
+          <p>Create some bookshelves!</p>
         )}
       </div>
     </div>
