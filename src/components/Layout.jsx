@@ -13,9 +13,9 @@ function Layout() {
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=" +
+      "https://www.googleapis.com/books/v1/volumes?q='" +
         searchInput +
-        "&maxResults=40&printType=books"
+        "'&maxResults=40&printType=books"
     )
       .then((response) => response.json())
       .then((res) => {
@@ -102,9 +102,6 @@ function Layout() {
                 <p onClick={(e) => filterBook("subject:education")}>
                   Educational
                 </p>
-                <p onClick={(e) => filterBook("subject:historical")}>
-                  Historical
-                </p>
                 <p onClick={(e) => filterBook("subject:'self help'")}>
                   Self-help
                 </p>
@@ -126,21 +123,25 @@ function Layout() {
               <Col
                 id="displaySearchContent"
                 className="displayBooks colColor rb bsb"
-                style={{ margin: "25px", padding: "10px", msOverflowY: "scroll" }}
+                style={{
+                  margin: "25px",
+                  padding: "10px",
+                  msOverflowY: "scroll",
+                }}
               >
                 {results.length > 0 ? (
                   results.map((bookItem) => {
                     return (
-                      <div style={{margin: "10px auto",}}>
-                      <div>
-                        <div className="card-container">
-                          <img
-                            src={bookItem.volumeInfo.imageLinks.thumbnail}
-                            alt=""
-                          />
+                      <div style={{ margin: "10px auto" }}>
+                        <div>
+                          <div className="card-container">
+                            <img
+                              src={bookItem.volumeInfo.imageLinks.thumbnail}
+                              alt=""
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
                     );
                   })
                 ) : (
