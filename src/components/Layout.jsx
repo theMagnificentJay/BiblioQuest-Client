@@ -1,14 +1,5 @@
 import React, { useState } from "react";
-import {
-  Input,
-  InputGroup,
-  Button,
-  InputGroupAddon,
-  // InputGroupButtonDropdown,
-  DropdownMenu,
-  DropdownToggle,
-  DropdownItem,
-} from "reactstrap";
+import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
 
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
@@ -36,7 +27,7 @@ function Layout() {
   function filterBook(filter) {
     console.log(filter);
     fetch(
-      `https://www.googleapis.com/books/v1/volumes?q=subject:${filter}&maxResults=40&printType=books`
+      `https://www.googleapis.com/books/v1/volumes?q=${filter}&maxResults=40&printType=books`
     )
       .then((response) => response.json())
       .then((res) => {
@@ -86,50 +77,76 @@ function Layout() {
                 <p>Staff List</p>
                 <p>Popular</p>
                 <br />
-                <h5 onClick={(e) => filterBook("fiction")}>Fiction</h5>
+                <h5 onClick={(e) => filterBook("subject:fiction")}>Fiction</h5>
                 <hr />
-                <p onClick={(e) => filterBook("young+adult")}>Young Adult</p>
-                <p onClick={(e) => filterBook("fantasy")}>Fantasy</p>
-                <p onClick={(e) => filterBook("children's")}>Children’s</p>
-                <p onClick={(e) => filterBook("science+fiction")}>
+                <p onClick={(e) => filterBook("subject:'young adult'")}>
+                  Young Adult
+                </p>
+                <p onClick={(e) => filterBook("subject:fantasy")}>Fantasy</p>
+                <p onClick={(e) => filterBook("subject:children")}>
+                  Children’s
+                </p>
+                <p onClick={(e) => filterBook("subject:'science fiction'")}>
                   Science Fiction
                 </p>
-                <p onClick={(e) => filterBook("thriller")}>
+                <p onClick={(e) => filterBook("subject:thriller")}>
                   Thrillers/Suspense
                 </p>
-                <p onClick={(e) => filterBook("horror")}>Horror</p>
-                <p onClick={(e) => filterBook("romance")}>Romance</p>
+                <p onClick={(e) => filterBook("subject:horror")}>Horror</p>
+                <p onClick={(e) => filterBook("subject:romance")}>Romance</p>
                 <br />
-                <h5 onClick={(e) => filterBook("nonfiction")}>Non-Fiction</h5>
+                <h5 onClick={(e) => filterBook("subject:nonfiction")}>
+                  Non-Fiction
+                </h5>
                 <hr />
-                <p onClick={(e) => filterBook("educational")}>Educational</p>
-                <p onClick={(e) => filterBook("historical")}>Historical</p>
-                <p onClick={(e) => filterBook("self+help")}>Self-help</p>
-                <p onClick={(e) => filterBook("religion")}>
+                <p onClick={(e) => filterBook("subject:education")}>
+                  Educational
+                </p>
+                <p onClick={(e) => filterBook("subject:historical")}>
+                  Historical
+                </p>
+                <p onClick={(e) => filterBook("subject:'self help'")}>
+                  Self-help
+                </p>
+                <p onClick={(e) => filterBook("subject:religion")}>
                   Religion/Spirituality
                 </p>
-                <p onClick={(e) => filterBook("biography")}>Biography</p>
-                <p onClick={(e) => filterBook("history")}>History</p>
-                <p onClick={(e) => filterBook("health")}>Health and Fitness</p>
+                <p onClick={(e) => filterBook("subject:biography")}>
+                  Biography
+                </p>
+                <p onClick={(e) => filterBook("subject:history")}>History</p>
+                <p onClick={(e) => filterBook("subject:health")}>
+                  Health and Fitness
+                </p>
               </div>
             </div>
           </Col>
           <Col className="colTwo brownBG rb">
             <Row className="popBookCarousel rb">
-              <Col id="displaySearchContent" className="displayBooks colColor rb bsb">
+              <Col
+                id="displaySearchContent"
+                className="displayBooks colColor rb bsb"
+                style={{ margin: "25px", padding: "10px", msOverflowY: "scroll" }}
+              >
                 {results.length > 0 ? (
                   results.map((bookItem) => {
                     return (
-                      <div className="card-container">
-                        <img
-                          src={bookItem.volumeInfo.imageLinks.thumbnail}
-                          alt=""
-                        />
+                      <div style={{margin: "10px auto",}}>
+                      <div>
+                        <div className="card-container">
+                          <img
+                            src={bookItem.volumeInfo.imageLinks.thumbnail}
+                            alt=""
+                          />
+                        </div>
                       </div>
+                    </div>
                     );
                   })
                 ) : (
-                  <p>empty</p>
+                  <p style={{ margin: "auto" }}>
+                    <i>Complete a search for results . . .</i>
+                  </p>
                 )}
               </Col>
             </Row>
