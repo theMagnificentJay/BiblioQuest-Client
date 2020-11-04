@@ -52,11 +52,7 @@ function Layout(props) {
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-<<<<<<< HEAD
         <NavbarComponent updateToken={updateToken} />
-=======
-        <NavbarComponent updateToken={props.updateToken} />
->>>>>>> JNBS fixed login updateToken function, lists can now be deleteted and updated.
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -156,11 +152,7 @@ function Layout(props) {
                         <div>
                           <div className="card-container">
                             <img
-<<<<<<< HEAD
                               src={bookItem.volumeInfo.imageLinks === undefined ? "../assets/nocover.png" : bookItem.volumeInfo.imageLinks.thumbnail}
-=======
-                              src={bookItem.volumeInfo.imageLinks.thumbnail}
->>>>>>> JNBS fixed login updateToken function, lists can now be deleteted and updated.
                               alt=""
                             />
                           </div>
