@@ -12,12 +12,14 @@ import {
   Container,
   Row,
   Col,
+  Form,
 } from "reactstrap";
 
 function Layout(props) {
   const [results, showResults] = useState([]);
 
-  function searchAll() {
+  function searchAll(e) {
+    e.preventDefault();
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
@@ -62,16 +64,18 @@ function Layout(props) {
             {/*blank_space*/}
           </Col>
           <Col className="colTwo colColor rb bsb">
-            <InputGroup>
-              <Input
-                className="form-control"
-                id="searchInput"
-                placeholder="Search author, genre, title, or publisher . . ."
-              />
-              <InputGroupAddon addonType="append">
-                <Button onClick={(e) => searchAll()}>Search</Button>
-              </InputGroupAddon>
-            </InputGroup>
+            <Form onSubmit={searchAll}>
+              <InputGroup>
+                <Input
+                  className="form-control"
+                  id="searchInput"
+                  placeholder="Search author, genre, title, or publisher . . ."
+                />
+                <InputGroupAddon addonType="append">
+                  <Button onClick={(e) => searchAll()}>Search</Button>
+                </InputGroupAddon>
+              </InputGroup>
+            </Form>
           </Col>
           <Col className="colThree col rb" xs="2">
             {/*blank_space*/}

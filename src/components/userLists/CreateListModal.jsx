@@ -42,7 +42,7 @@ const CreateListModal = (props) => {
         {"Create a Bookshelf!"}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className="{className}">
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Create Shelf</ModalHeader>
         <ModalBody>
           <p>
             Biblioquest's Bookshelves are a great way to keep your reading items

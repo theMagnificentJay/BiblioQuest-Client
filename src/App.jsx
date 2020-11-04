@@ -20,6 +20,10 @@ function App() {
     // console.log(token);
   }, [token]);
 
+  useEffect(() => {
+    document.title = "BiblioQuest"
+ }, []);
+
   return (
     <Layout updateToken={updateToken} clearToken={clearToken} token={token} />
   );

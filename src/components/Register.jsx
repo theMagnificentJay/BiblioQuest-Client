@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Button,
   Container,
@@ -15,7 +15,7 @@ const Register = (props) => {
   const [emailErr, setEmailErr] = useState("");
   const [passwordErr, setPasswordErr] = useState("");
   const [responseMessage, setResponseMessage] = useState("");
-  const [isValid, setIsValid] = useState("");
+  // const [isValid, setIsValid] = useState("");
 
   const submitRegister = (event) => {
     event.preventDefault();
