@@ -150,6 +150,7 @@ code {
   position: absolute;
   height: 85%;
   overflow-y: scroll;
+  overflow-x: hidden;
   text-align: left;
   padding-left: 10px;
   padding-right: 90px;
@@ -184,7 +185,8 @@ code {
 .displayBooks {
   display: flex;
   flex-wrap: wrap;
-  position: fixed;
-  height: 97.5%;
+  position: relative;
+  min-height: 62vh;
+  max-height: 62vh;
   overflow-y: scroll;
 }
