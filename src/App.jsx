@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+<<<<<<< HEAD
 import "./App.css";
+=======
+>>>>>>> JNBS fixed login updateToken function, lists can now be deleteted and updated.
 
 <<<<<<< HEAD
 import Layout from "./components/Layout";
 
 function App() {
+<<<<<<< HEAD
   return <Layout />;
 =======
 import Search from "./components/Search";
@@ -84,6 +88,21 @@ function App() {
     </Container>
   );
 >>>>>>> JNBS somewhat functional list display
+=======
+  const [token, setToken] = useState("");
+
+  const updateToken = (newToken) => {
+    localStorage.setItem("token", newToken);
+    setToken(newToken);
+  };
+
+  useEffect(() => {
+    setToken(localStorage.getItem("token"));
+    // console.log(token);
+  }, [token]);
+
+  return <Layout updateToken={updateToken} token={token} />;
+>>>>>>> JNBS fixed login updateToken function, lists can now be deleteted and updated.
 }
 
 export default App;

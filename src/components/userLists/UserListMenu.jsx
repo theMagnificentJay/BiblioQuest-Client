@@ -6,19 +6,19 @@ import ListRouter from "./ListRouter";
 import CreateListModal from "./CreateListModal";
 
 // App component
-function UserList() {
+function UserList(props) {
   const [token, setToken] = useState("");
 
-  useEffect(() => {
-    setToken(localStorage.getItem("token"));
-  }, []);
+  // useEffect(() => {
+  //   setToken(localStorage.getItem("token"));
+  // }, []);
 
-  return token ? (
+  return props.token ? (
     <div className="">
       <>
-        <CreateListModal token={token} />
+        <CreateListModal token={props.token} />
         <Router>
-          <ListRouter token={token} />
+          <ListRouter token={props.token} />
         </Router>
       </>
     </div>

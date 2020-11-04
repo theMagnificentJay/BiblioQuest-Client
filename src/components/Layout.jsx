@@ -3,10 +3,11 @@ import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
 
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
+import UserListMenu from "./userLists/UserListMenu";
 
 import { Container, Row, Col } from "reactstrap";
 
-function Layout() {
+function Layout(props) {
   const [results, showResults] = useState([]);
 
   const [token, setToken] = useState("");
@@ -51,7 +52,11 @@ function Layout() {
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
+<<<<<<< HEAD
         <NavbarComponent updateToken={updateToken} />
+=======
+        <NavbarComponent updateToken={props.updateToken} />
+>>>>>>> JNBS fixed login updateToken function, lists can now be deleteted and updated.
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -151,7 +156,11 @@ function Layout() {
                         <div>
                           <div className="card-container">
                             <img
+<<<<<<< HEAD
                               src={bookItem.volumeInfo.imageLinks === undefined ? "../assets/nocover.png" : bookItem.volumeInfo.imageLinks.thumbnail}
+=======
+                              src={bookItem.volumeInfo.imageLinks.thumbnail}
+>>>>>>> JNBS fixed login updateToken function, lists can now be deleteted and updated.
                               alt=""
                             />
                           </div>
@@ -168,7 +177,7 @@ function Layout() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb bsb" xs="2">
-            My_List
+            <UserListMenu token={props.token} />
           </Col>
         </Row>
       </Container>
