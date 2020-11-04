@@ -31,7 +31,11 @@ const ListRouter = (props) => {
           lists.map((list, index) => {
             return (
               <div key={index}>
-                <DisplayListModal list={list} token={props.token} />
+                <DisplayListModal
+                  list={list}
+                  token={props.token}
+                  componentRefresher={props.componentRefresher}
+                />
               </div>
             );
           })
