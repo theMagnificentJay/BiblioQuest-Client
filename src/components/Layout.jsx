@@ -13,13 +13,16 @@ function Layout() {
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q='" +
+      "https://www.googleapis.com/books/v1/volumes?q=" +
         searchInput +
-        "'&maxResults=40&printType=books"
+        "&maxResults=40&printType=books"
     )
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
   }
   console.log(results);
@@ -32,8 +35,11 @@ function Layout() {
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
-  }
+  };
 
   return (
     <Container className="masterContainer rb bsb" fluid="?">
@@ -136,7 +142,7 @@ function Layout() {
                         <div>
                           <div className="card-container">
                             <img
-                              src={bookItem.volumeInfo.imageLinks.thumbnail}
+                              src={bookItem.volumeInfo.imageLinks === undefined ? "../assets/nocover.png" : bookItem.volumeInfo.imageLinks.thumbnail}
                               alt=""
                             />
                           </div>
