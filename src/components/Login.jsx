@@ -6,6 +6,7 @@ const Login = (props) => {
   const [password, setPassword] = useState("");
 
   const submitLogin = (event) => {
+    if(email && password) {
     event.preventDefault();
     fetch("http://localhost:3030/user/login", {
       //!needs to be updated to heroku for "production"
@@ -18,6 +19,7 @@ const Login = (props) => {
         props.updateToken(data.token);
         console.log(data.message);
       });
+    } else alert("Email and Password are required")
   };
 
   return (
@@ -25,20 +27,21 @@ const Login = (props) => {
       <Container className="inputs">
         <Container className="form-group input-group">
           <Form className="form-group input-group">
-          <Label for="email" className="sr-only" />
+          <Label htmlFor="email" className="sr-only" />
             <Input
               onChange={(e) => setEmail(e.target.value)}
               type="email"
               className="form-control"
               id="email"
-              placeholder="Email Address" required="true"
+              placeholder="Email Address"
+              required
             />
           </Form>
         </Container>
 
         <Container className="form-group input-group">
           <Form className="form-group input-group">
-            <Label for="password" className="sr-only" />
+            <Label htmlFor="password" className="sr-only" />
             <Input
               onChange={(e) => setPassword(e.target.value)}
               type="password"
