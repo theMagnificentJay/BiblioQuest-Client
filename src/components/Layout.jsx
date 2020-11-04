@@ -10,14 +10,6 @@ import { Container, Row, Col } from "reactstrap";
 function Layout(props) {
   const [results, showResults] = useState([]);
 
-  const [token, setToken] = useState("");
-
-  const updateToken = (newToken) => {
-    localStorage.setItem("token", newToken);
-    setToken(newToken);
-    console.log(newToken);
-  };
-
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
 
@@ -52,7 +44,7 @@ function Layout(props) {
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent updateToken={updateToken} />
+        <NavbarComponent updateToken={props.updateToken} />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
