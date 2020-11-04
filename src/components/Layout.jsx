@@ -3,23 +3,25 @@ import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
 
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
+import UserListMenu from "./userLists/UserListMenu";
 
 import { Container, Row, Col } from "reactstrap";
 
-function Layout() {
+function Layout(props) {
   const [results, showResults] = useState([]);
 
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=" +
-        searchInput +
-        "&maxResults=40&printType=books"
+      `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=40&printType=books`
     )
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
   }
   console.log(results);
@@ -32,14 +34,17 @@ function Layout() {
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
       });
-  }
+  };
 
   return (
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent />
+        <NavbarComponent updateToken={props.updateToken} />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -99,11 +104,11 @@ function Layout() {
                   Non-Fiction
                 </h5>
                 <hr />
+                <p onClick={(e) => filterBook("subject:art")}>
+                  Art
+                </p>
                 <p onClick={(e) => filterBook("subject:education")}>
                   Educational
-                </p>
-                <p onClick={(e) => filterBook("subject:historical")}>
-                  Historical
                 </p>
                 <p onClick={(e) => filterBook("subject:'self help'")}>
                   Self-help
@@ -126,21 +131,25 @@ function Layout() {
               <Col
                 id="displaySearchContent"
                 className="displayBooks colColor rb bsb"
-                style={{ margin: "25px", padding: "10px", msOverflowY: "scroll" }}
+                style={{
+                  margin: "25px",
+                  padding: "10px",
+                  msOverflowY: "scroll",
+                }}
               >
                 {results.length > 0 ? (
                   results.map((bookItem) => {
                     return (
-                      <div style={{margin: "10px auto",}}>
-                      <div>
-                        <div className="card-container">
-                          <img
-                            src={bookItem.volumeInfo.imageLinks.thumbnail}
-                            alt=""
-                          />
+                      <div style={{ margin: "10px auto" }}>
+                        <div>
+                          <div className="card-container">
+                            <img
+                              src={bookItem.volumeInfo.imageLinks === undefined ? "../assets/nocover.png" : bookItem.volumeInfo.imageLinks.thumbnail}
+                              alt=""
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
                     );
                   })
                 ) : (
@@ -152,7 +161,7 @@ function Layout() {
             </Row>
           </Col>
           <Col className="colThree col colColor rb bsb" xs="2">
-            My_List
+            <UserListMenu token={props.token} />
           </Col>
         </Row>
       </Container>
