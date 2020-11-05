@@ -108,7 +108,7 @@ const DisplayListModal = (props) => {
 
   return (
     <div>
-      <p onClick={toggle}>{props.list.title}</p>
+      <p className="displayListModal" onClick={toggle}>{props.list.title}</p>
       <Modal isOpen={modal} toggle={toggle} className="{className}">
         <ModalHeader toggle={toggle}>{props.list.title}</ModalHeader>
         <ModalBody>

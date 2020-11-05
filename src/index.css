@@ -192,6 +192,7 @@ code {
   overflow-y: scroll;
   justify-content: space-evenly;
 }
+
 .bookCardContainer {
   margin: 10px auto;
   padding: 10px;
@@ -224,4 +225,14 @@ code {
 
 .bookCardBodySubTitle {
   font-size: 14px;
+}
+
+.displayListModal {
+  margin-top: 10px;
+}
+
+.displayListModal:hover {
+  text-decoration: underline;
+  font-style: oblique;
+  cursor: pointer;
 }

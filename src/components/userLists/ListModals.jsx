@@ -36,7 +36,8 @@ const ListModals = (props) => {
           token={props.token}
           setListResponse={setListResponse}
         />
-
+        <h4 style={{color: "black", marginTop: "10px"}}>My Bookshelves</h4>
+        <hr/>
         {lists.length > 0 ? (
           lists.map((list, index) => {
             return (
