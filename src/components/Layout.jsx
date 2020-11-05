@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
+import './layout.css';
 
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
