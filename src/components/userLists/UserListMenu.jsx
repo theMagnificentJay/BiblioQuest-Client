@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Route, Link, Switch } from "react-router-dom";
 import { Button } from "reactstrap";
 // import { BrowserRouter as Router } from "react-router-dom";
 import ListModals from "./ListModals";

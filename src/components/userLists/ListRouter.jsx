@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Route, Link, Switch } from "react-router-dom";
-// import { Button } from "reactstrap";
 import DisplayListModal from "./DisplayListModal";
 
 const ListRouter = (props) => {

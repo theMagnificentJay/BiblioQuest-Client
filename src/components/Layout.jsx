@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
+import BookCard from "./BookCard";
 import BookAdderModal from "./BookAdderModal";
 
 import {
@@ -12,20 +13,11 @@ import {
   Container,
   Row,
   Col,
-  Card,
-  CardBody,
-  CardText,
-  CardTitle,
-  CardSubtitle,
-  CardImg,
 } from "reactstrap";
 
 function Layout(props) {
   const [results, showResults] = useState([]);
-  const [show, setShow] = useState(false);
-  const [modal, setModal] = useState(false);
-
-  const toggle = () => setModal(!modal);
+  // const [show, setShow] = useState(false);
 
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
@@ -155,40 +147,9 @@ function Layout(props) {
                 {results.length > 0 ? (
                   results.map((book, index) => {
                     return (
-                      <div>
-                        <Card key={index} style={{ display: "flex" }}>
-                          <CardImg
-                            top
-                            width="100%"
-                            src={
-                              book.volumeInfo.imageLinks === undefined
-                                ? "../assets/nocover.png"
-                                : book.volumeInfo.imageLinks.thumbnail
-                            }
-                            alt="Card image cap"
-                            style={{ width: "10em", height: "15em" }}
-                          />
-                          <CardBody>
-                            <CardTitle tag="h5">
-                              {book.volumeInfo.title}
-                            </CardTitle>
-                            <CardSubtitle tag="h6" className="mb-2 text-muted">
-                              {book.volumeInfo.subtitle ? (
-                                book.volumeInfo.subtitle
-                              ) : (
-                                <></>
-                              )}
-                            </CardSubtitle>
-                            <CardText>{`Author: ${book.volumeInfo.author}`}</CardText>
-                            <Button onClick={toggle}>Add to Bookshelf</Button>
-                          </CardBody>
-                          <BookAdderModal
-                            modal={modal}
-                            toggle={toggle}
-                            book={book}
-                            token={props.token}
-                          />
-                        </Card>
+                      <div key={index}>
+                        <BookCard book={book} token={props.token} />
+                        {/* <BookAdderModal book={book} token={props.token} /> */}
                       </div>
                     );
                   })

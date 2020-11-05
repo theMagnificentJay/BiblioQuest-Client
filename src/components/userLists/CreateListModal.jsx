@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 
 const CreateListModal = (props) => {
-  const { token } = props;
   const [modal, setModal] = useState(false);
   const [listTitle, setListTitle] = useState("");
   const [listResponse, setListResponse] = useState("");

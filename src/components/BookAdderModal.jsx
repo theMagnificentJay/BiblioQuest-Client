@@ -5,12 +5,12 @@ import {
   ModalHeader,
   ModalFooter,
   ModalBody,
-  Input,
   Label,
   Dropdown,
   DropdownItem,
   DropdownToggle,
   DropdownMenu,
+  Form,
 } from "reactstrap";
 
 const BookAdderModal = (props) => {
@@ -18,6 +18,9 @@ const BookAdderModal = (props) => {
   const [err, setErr] = useState("");
   const [lists, setLists] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
 
   const toggle2 = () => setDropdownOpen((prevState) => !prevState);
 
@@ -51,7 +54,7 @@ const BookAdderModal = (props) => {
       .then((res) => res.json())
       .then((data) => {
         setResponse(data.message);
-        console.log(response);
+        console.log(data.message);
       })
       .catch((err) => {
         setErr(err);
@@ -74,13 +77,16 @@ const BookAdderModal = (props) => {
       .catch((err) => {
         setErr(err);
       });
-  }, []);
+  }, [props.token]);
 
   return (
     <div>
-      <Modal isOpen={props.modal} toggle={props.toggle} className="yoyo">
-        <ModalHeader toggle={props.toggle}>
-          Would you like to add this volume to your bookshelf?{" "}
+      <Form inline onSubmit={(e) => e.preventDefault()}>
+        <Button onClick={toggle}>Add to Bookshelf</Button>
+      </Form>
+      <Modal isOpen={modal} toggle={toggle} className="yoyo">
+        <ModalHeader toggle={toggle}>
+          Would you like to add this volume to your Bookshelf?{" "}
         </ModalHeader>
         <ModalBody>
           {`Just select a list and click "Add" to have  added to your bookshelf.`}
@@ -107,7 +113,7 @@ const BookAdderModal = (props) => {
           </Dropdown>
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={props.toggle}>
+          <Button color="secondary" onClick={toggle}>
             Cancel
           </Button>
         </ModalFooter>

@@ -14,7 +14,6 @@ import {
   CardText,
   CardBody,
   CardImg,
-  CardHeader,
 } from "reactstrap";
 
 const DisplayListModal = (props) => {
