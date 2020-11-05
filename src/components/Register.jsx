@@ -1,14 +1,27 @@
-import React, { useState } from "react";
-import { Button, Container, Label, Input, Form } from "reactstrap";
+import React, { useState, useEffect } from "react";
+import {
+  Button,
+  Container,
+  Label,
+  Input,
+  Form,
+  UncontrolledAlert,
+} from "reactstrap";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
+  const [emailErr, setEmailErr] = useState("");
+  const [passwordErr, setPasswordErr] = useState("");
+  const [responseMessage, setResponseMessage] = useState("");
+  const [isValid, setIsValid] = useState("");
 
   const submitRegister = (event) => {
-    if(email && password) {
-      event.preventDefault();
+    event.preventDefault();
+    const isValid = formValidate();
+    console.log(isValid);
+    if (isValid) {
       if (password === password2) {
         fetch("http://localhost:3030/user/register", {
           //!needs to be updated to heroku for "production"
@@ -20,18 +33,44 @@ const Register = (props) => {
           .then((data) => {
             props.updateToken(data.token);
             console.log(data.message);
+            setResponseMessage(data.message);
           });
       } else {
         alert("Password must match: Please reenter credentials");
       }
-    } else alert("Email and Password are required")
+    } else {
+      return;
+    }
+  };
+
+  const formValidate = (event) => {
+    const passwordErr = {};
+    const emailErr = {};
+    let isValid = true;
+
+    // checks password length and returns error if <5
+    if (password.trim().length < 5) {
+      passwordErr.TooShort = "Password must contain 5 or more characters.";
+      isValid = false;
+    }
+
+    // check email is formatted
+    if (!email.includes("@") || !email.includes(".")) {
+      emailErr.invalidFormat =
+        "Invalid email. Email must be formatted as test@test.com";
+      isValid = false;
+    }
+
+    setPasswordErr(passwordErr);
+    setEmailErr(emailErr);
+    return isValid;
   };
 
   return (
     <Container>
-      <Container className="inputs">
-        <Container className="form-group input-group">
-          <Form className="form-group input-group">
+      <Form onSubmit={submitRegister} className="form-group input-group">
+        <Container className="inputs">
+          <Container className="form-group input-group">
             <Label for="email" className="sr-only" />
             <Input
               onChange={(e) => setEmail(e.target.value)}
@@ -40,42 +79,57 @@ const Register = (props) => {
               id="email"
               placeholder="Email Address"
             />
-          </Form>
+            <br />
+            {emailErr ? (
+              <UncontrolledAlert color="danger">
+                {Object.keys(emailErr).map((key) => {
+                  return <div>{emailErr[key]}</div>;
+                })}
+              </UncontrolledAlert>
+            ) : (
+              <></>
+            )}
+          </Container>
+
+          <Container className="form-group input-group">
+            <Label for="password" className="sr-only" />
+            <Input
+              onChange={(e) => setPassword(e.target.value)}
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Choose a password"
+            />
+            {passwordErr ? (
+              <UncontrolledAlert color="danger">
+                {Object.keys(passwordErr).map((key) => {
+                  return <div>{passwordErr[key]}</div>;
+                })}
+              </UncontrolledAlert>
+            ) : (
+              <></>
+            )}
+          </Container>
+
+          <Container className="form-group input-group">
+            <Label for="password2" className="sr-only" />
+            <Input
+              onChange={(e) => setPassword2(e.target.value)}
+              type="password"
+              className="form-control"
+              id="password2"
+              placeholder="Confirm password"
+            />
+          </Container>
         </Container>
 
-        <Container className="form-group input-group">
-        <Form className="form-group input-group">  
-          <Label for="password" className="sr-only" />
-          <Input
-            onChange={(e) => setPassword(e.target.value)}
-            type="password"
-            className="form-control"
-            id="password"
-            placeholder="Choose a password"
-            minLength ="5"
-          />
-          </Form>
+        <Container className="footerLoginModal text-center">
+          <Button type="submit" onClick={submitRegister} className="signUpBtn">
+            Sign Up
+          </Button>
+          <p>{responseMessage}</p>
         </Container>
-
-        <Container className="form-group input-group">
-        <Form className="form-group input-group">
-          <Label for="password2" className="sr-only" />
-          <Input
-            onChange={(e) => setPassword2(e.target.value)}
-            type="password"
-            className="form-control"
-            id="password2"
-            placeholder="Confirm password"
-          />
-          </Form>
-        </Container>
-      </Container>
-
-      <Container className="footerLoginModal text-center">
-        <Button onClick={submitRegister} className="signUpBtn">
-          Sign Up
-        </Button>
-      </Container>
+      </Form>
     </Container>
   );
 };

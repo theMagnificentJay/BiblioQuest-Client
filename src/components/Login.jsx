@@ -4,6 +4,7 @@ import { Button, Container, Label, Input, Form } from "reactstrap";
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loginMessage, setLoginMessage] = useState("") 
 
   const submitLogin = (event) => {
     if(email && password) {
@@ -18,15 +19,16 @@ const Login = (props) => {
       .then((data) => {
         props.updateToken(data.token);
         console.log(data.message);
+        setLoginMessage(data.message);
       });
     } else alert("Email and Password are required")
   };
 
   return (
     <Container>
+      <Form onSubmit={submitLogin} className="form-group input-group">
       <Container className="inputs">
         <Container className="form-group input-group">
-          <Form className="form-group input-group">
           <Label htmlFor="email" className="sr-only" />
             <Input
               onChange={(e) => setEmail(e.target.value)}
@@ -36,11 +38,9 @@ const Login = (props) => {
               placeholder="Email Address"
               required
             />
-          </Form>
         </Container>
 
         <Container className="form-group input-group">
-          <Form className="form-group input-group">
             <Label htmlFor="password" className="sr-only" />
             <Input
               onChange={(e) => setPassword(e.target.value)}
@@ -48,16 +48,16 @@ const Login = (props) => {
               className="form-control"
               id="password"
               placeholder="Password"
-              required
             />
-          </Form>  
         </Container>
       </Container>
       <Container className="footerLoginModal text-center">
         <Button onClick={submitLogin} className="signUpBtn">
           Login
         </Button>
+        <p>{loginMessage}</p>
       </Container>
+      </Form>
     </Container>
   );
 };
