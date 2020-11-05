@@ -187,7 +187,6 @@ code {
 .displayBooks {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
   position: relative;
   min-height: 62vh;
   max-height: 62vh;
