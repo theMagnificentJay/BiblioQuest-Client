@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { Route, Link, Switch } from "react-router-dom";
-// import { Button } from "reactstrap";
+import CreateListModal from "./CreateListModal";
 import DisplayListModal from "./DisplayListModal";
 
-const ListRouter = (props) => {
+const ListModals = (props) => {
   const [lists, setLists] = useState([]);
-  const [err, setErr] = useState([]);
+  const [err, setErr] = useState("");
+  const [deleteResponse, setDeleteResponse] = useState("");
+  const [updateListRes, setUpdateListRes] = useState("");
+  const [listResponse, setListResponse] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3030/list/allLists", {
+    fetch("https://biblioquest.herokuapp.com/list/allLists", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -22,11 +24,19 @@ const ListRouter = (props) => {
       .catch((err) => {
         setErr(err);
       });
-  }, []);
+    setUpdateListRes("");
+    setDeleteResponse("");
+    setListResponse("");
+  }, [deleteResponse, updateListRes, listResponse]);
 
   return (
     <div className="sidebar">
       <div className="sidebar-list-styling">
+        <CreateListModal
+          token={props.token}
+          setListResponse={setListResponse}
+        />
+
         {lists.length > 0 ? (
           lists.map((list, index) => {
             return (
@@ -34,7 +44,10 @@ const ListRouter = (props) => {
                 <DisplayListModal
                   list={list}
                   token={props.token}
-                  componentRefresher={props.componentRefresher}
+                  setDeleteResponse={setDeleteResponse}
+                  deleteResponse={deleteResponse}
+                  setUpdateListRes={setUpdateListRes}
+                  updateListRes={updateListRes}
                 />
               </div>
             );
@@ -49,4 +62,4 @@ const ListRouter = (props) => {
   );
 };
 
-export default ListRouter;
+export default ListModals;

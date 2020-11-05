@@ -9,7 +9,7 @@ const Register = (props) => {
   const submitRegister = (event) => {
     event.preventDefault();
     if (password === password2) {
-      fetch("http://localhost:3030/user/register", {
+      fetch("https://biblioquest.herokuapp.com/user/register", {
         //!needs to be updated to heroku for "production"
         method: "POST",
         headers: { "Content-Type": "application/json" },

@@ -1,14 +1,24 @@
 import React, { useState } from "react";
-import { Input, InputGroup, Button, InputGroupAddon, Form } from "reactstrap";
-
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
+import BookCard from "./BookCard";
+import BookAdderModal from "./BookAdderModal";
 
-import { Container, Row, Col } from "reactstrap";
+import {
+  Input,
+  InputGroup,
+  Button,
+  InputGroupAddon,
+  Container,
+  Row,
+  Col,
+  Form,
+} from "reactstrap";
 
 function Layout(props) {
   const [results, showResults] = useState([]);
+  // const [show, setShow] = useState(false);
 
   function searchAll(e) {
     e.preventDefault();
@@ -45,7 +55,11 @@ function Layout(props) {
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent updateToken={props.updateToken} />
+        <NavbarComponent
+          updateToken={props.updateToken}
+          clearToken={props.clearToken}
+          token={props.token}
+        />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -139,21 +153,11 @@ function Layout(props) {
                 }}
               >
                 {results.length > 0 ? (
-                  results.map((bookItem) => {
+                  results.map((book, index) => {
                     return (
-                      <div style={{ margin: "10px auto" }}>
-                        <div>
-                          <div className="card-container">
-                            <img
-                              src={
-                                bookItem.volumeInfo.imageLinks === undefined
-                                  ? "../assets/nocover.png"
-                                  : bookItem.volumeInfo.imageLinks.thumbnail
-                              }
-                              alt=""
-                            />
-                          </div>
-                        </div>
+                      <div key={index}>
+                        <BookCard book={book} token={props.token} />
+                        {/* <BookAdderModal book={book} token={props.token} /> */}
                       </div>
                     );
                   })

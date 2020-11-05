@@ -7,7 +7,7 @@ const Login = (props) => {
 
   const submitLogin = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3030/user/login", {
+    fetch("https://biblioquest.herokuapp.com/user/login", {
       //!needs to be updated to heroku for "production"
       method: "POST",
       headers: { "Content-Type": "application/json" },
