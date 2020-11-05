@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import { Button } from "reactstrap";
 import DisplayListModal from "./DisplayListModal";
 
 const ListRouter = (props) => {
@@ -6,7 +7,7 @@ const ListRouter = (props) => {
   const [err, setErr] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3030/list/allLists", {
+    fetch("https://biblioquest.herokuapp.com/list/allLists", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -29,7 +30,11 @@ const ListRouter = (props) => {
           lists.map((list, index) => {
             return (
               <div key={index}>
-                <DisplayListModal list={list} token={props.token} />
+                <DisplayListModal
+                  list={list}
+                  token={props.token}
+                  componentRefresher={props.componentRefresher}
+                />
               </div>
             );
           })

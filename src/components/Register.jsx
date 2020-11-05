@@ -23,7 +23,7 @@ const Register = (props) => {
     console.log(isValid);
     if (isValid) {
       if (password === password2) {
-        fetch("http://localhost:3030/user/register", {
+        fetch("https://biblioquest.herokuapp.com/user/register", {
           //!needs to be updated to heroku for "production"
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -38,6 +38,7 @@ const Register = (props) => {
       } else {
         alert("Password must match: Please reenter credentials");
       }
+    
     } else {
       return;
     }

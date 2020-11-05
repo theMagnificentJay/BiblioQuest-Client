@@ -1,17 +1,44 @@
 import React from "react";
-import { Container } from "reactstrap";
+import {
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardText,
+} from "reactstrap";
+import BookAdderModal from "./BookAdderModal";
 
-const BookCard = (props) => {
+const UserCard = (props) => {
   return (
-    <Container className="card-container">
-      <img src={props.image} alt="" />
-      <Container className="desc">
-        <h2>{props.title}</h2>
-        <h3>{props.author}</h3>
-        <p>{props.publishedDate}</p>
-      </Container>
-    </Container>
+    <div>
+      <Card style={{ display: "flex" }}>
+        <CardImg
+          top
+          width="100%"
+          src={
+            props.book.volumeInfo.imageLinks === undefined
+              ? "../assets/nocover.png"
+              : props.book.volumeInfo.imageLinks.thumbnail
+          }
+          alt="Card image cap"
+          style={{ width: "10em", height: "15em" }}
+        />
+        <CardBody>
+          <CardTitle tag="h5">{props.book.volumeInfo.title}</CardTitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">
+            {props.book.volumeInfo.subtitle ? (
+              props.book.volumeInfo.subtitle
+            ) : (
+              <></>
+            )}
+          </CardSubtitle>
+          <CardText>{`Author(s): ${props.book.volumeInfo.authors}`}</CardText>
+          <BookAdderModal token={props.token} book={props.book} />
+        </CardBody>
+      </Card>
+    </div>
   );
 };
 
-export default BookCard;
+export default UserCard;

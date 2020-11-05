@@ -1,26 +1,36 @@
 import React, { useState } from "react";
-import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
-
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
+import BookCard from "./BookCard";
+import BookAdderModal from "./BookAdderModal";
 
-import { Container, Row, Col } from "reactstrap";
+import {
+  Input,
+  InputGroup,
+  Button,
+  InputGroupAddon,
+  Container,
+  Row,
+  Col,
+} from "reactstrap";
 
 function Layout(props) {
   const [results, showResults] = useState([]);
+  // const [show, setShow] = useState(false);
 
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=" +
-        searchInput +
-        "&maxResults=40&printType=books"
+      `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=40&printType=books`
     )
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }
   console.log(results);
@@ -33,6 +43,9 @@ function Layout(props) {
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }
 
@@ -100,11 +113,9 @@ function Layout(props) {
                   Non-Fiction
                 </h5>
                 <hr />
+                <p onClick={(e) => filterBook("subject:art")}>Art</p>
                 <p onClick={(e) => filterBook("subject:education")}>
                   Educational
-                </p>
-                <p onClick={(e) => filterBook("subject:historical")}>
-                  Historical
                 </p>
                 <p onClick={(e) => filterBook("subject:'self help'")}>
                   Self-help
@@ -134,17 +145,11 @@ function Layout(props) {
                 }}
               >
                 {results.length > 0 ? (
-                  results.map((bookItem) => {
+                  results.map((book, index) => {
                     return (
-                      <div style={{ margin: "10px auto" }}>
-                        <div>
-                          <div className="card-container">
-                            <img
-                              src={bookItem.volumeInfo.imageLinks.thumbnail}
-                              alt=""
-                            />
-                          </div>
-                        </div>
+                      <div key={index}>
+                        <BookCard book={book} token={props.token} />
+                        {/* <BookAdderModal book={book} token={props.token} /> */}
                       </div>
                     );
                   })

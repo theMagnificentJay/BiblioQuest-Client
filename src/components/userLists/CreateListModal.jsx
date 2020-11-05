@@ -11,7 +11,6 @@ import {
 } from "reactstrap";
 
 const CreateListModal = (props) => {
-  const { token } = props;
   const [modal, setModal] = useState(false);
   const [listTitle, setListTitle] = useState("");
   const [listResponse, setListResponse] = useState("");
@@ -22,7 +21,7 @@ const CreateListModal = (props) => {
   };
 
   const createList = () => {
-    fetch("http://localhost:3030/list/newList", {
+    fetch("https://biblioquest.herokuapp.com/list/newList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
