@@ -16,7 +16,6 @@ import {
 
 function Layout(props) {
   const [results, showResults] = useState([]);
-  // const [show, setShow] = useState(false);
 
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
@@ -32,7 +31,6 @@ function Layout(props) {
         console.error("Error:", error);
       });
   }
-  console.log(results);
 
   function filterBook(filter) {
     console.log(filter);
@@ -152,7 +150,6 @@ function Layout(props) {
                     return (
                       <div key={index}>
                         <BookCard book={book} token={props.token} />
-                        {/* <BookAdderModal book={book} token={props.token} /> */}
                       </div>
                     );
                   })
