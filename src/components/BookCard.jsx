@@ -22,11 +22,21 @@ const UserCard = (props) => {
               : props.book.volumeInfo.imageLinks.thumbnail
           }
           alt="Card image cap"
-          style={{ width: "10em", height: "15em", margin: "auto", paddingTop: "10px" }}
+          style={{
+            width: "10em",
+            height: "15em",
+            margin: "auto",
+            paddingTop: "10px",
+          }}
         />
         <CardBody className="bookCardBody">
-          <CardTitle className="bookCardBodyTitle" tag="h5">{props.book.volumeInfo.title}</CardTitle>
-          <CardSubtitle tag="h6" className="bookCardBodySubTitle mb-2 text-muted">
+          <CardTitle className="bookCardBodyTitle" tag="h5">
+            {props.book.volumeInfo.title}
+          </CardTitle>
+          <CardSubtitle
+            tag="h6"
+            className="bookCardBodySubTitle mb-2 text-muted"
+          >
             {props.book.volumeInfo.subtitle ? (
               props.book.volumeInfo.subtitle
             ) : (
@@ -35,7 +45,7 @@ const UserCard = (props) => {
           </CardSubtitle>
           <CardText>{`Author(s): ${props.book.volumeInfo.authors}`}</CardText>
         </CardBody>
-          <BookAdderModal token={props.token} book={props.book} />
+        <BookAdderModal token={props.token} book={props.book} />
       </Card>
     </div>
   );
