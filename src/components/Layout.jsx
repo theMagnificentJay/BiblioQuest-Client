@@ -72,7 +72,7 @@ function Layout(props) {
                   placeholder="Search author, genre, title, or publisher . . ."
                 />
                 <InputGroupAddon addonType="append">
-                  <Button onClick={(e) => searchAll()}>Search</Button>
+                  <Button onSubmit={(e) => searchAll()}>Search</Button>
                 </InputGroupAddon>
               </InputGroup>
             </Form>
