@@ -29,16 +29,30 @@ const Register = (props) => {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email, password }),
         })
-          .then((res) => res.json())
+          .then((res) => {
+            if (res.ok) {
+              return res.json();
+            } else {
+              if (res.status === 409) {
+                setResponseMessage("Account Already Exists");
+                throw new Error("Account Already Exist");
+              } else {
+                setResponseMessage("Something went wrong");
+                throw new Error("Something went wrong");
+              }
+            }
+          })
           .then((data) => {
             props.updateToken(data.token);
             console.log(data.message);
             setResponseMessage(data.message);
+          })
+          .catch((err) => {
+            alert(err);
           });
       } else {
         alert("Password must match: Please reenter credentials");
       }
-    
     } else {
       return;
     }
