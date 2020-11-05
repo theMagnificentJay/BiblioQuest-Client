@@ -1,6 +1,13 @@
 import React, { useState } from "react";
 import LoginModal from "./LoginModal";
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav } from "reactstrap";
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  Button,
+} from "reactstrap";
 
 const NavbarComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +21,11 @@ const NavbarComponent = (props) => {
       <NavbarToggler onClick={toggle} />
       <Collapse isOpen={isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <LoginModal updateToken={props.updateToken} />
+          {props.token ? (
+            <Button onClick={props.clearToken}>Logout</Button>
+          ) : (
+            <LoginModal updateToken={props.updateToken} />
+          )}
         </Nav>
       </Collapse>
     </Navbar>

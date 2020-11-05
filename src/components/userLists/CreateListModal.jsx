@@ -11,18 +11,17 @@ import {
 } from "reactstrap";
 
 const CreateListModal = (props) => {
-  const { token } = props;
   const [modal, setModal] = useState(false);
   const [listTitle, setListTitle] = useState("");
-  const [listResponse, setListResponse] = useState("");
+  // const [listResponse, setListResponse] = useState("");
 
   const toggle = () => {
     setModal(!modal);
-    setListResponse("");
+    props.setListResponse("");
   };
 
   const createList = () => {
-    fetch("http://localhost:3030/list/newList", {
+    fetch("https://biblioquest.herokuapp.com/list/newList", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,7 +31,8 @@ const CreateListModal = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setListResponse(data.message);
+        props.setListResponse(data.message);
+        toggle();
       });
   };
 
@@ -42,7 +42,7 @@ const CreateListModal = (props) => {
         {"Create a Bookshelf!"}
       </Button>
       <Modal isOpen={modal} toggle={toggle} className="{className}">
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Create a Shelf</ModalHeader>
         <ModalBody>
           <p>
             Biblioquest's Bookshelves are a great way to keep your reading items
@@ -57,7 +57,6 @@ const CreateListModal = (props) => {
             id="listTitle"
             placeholder="e.g. Philosophy"
           />
-          {listResponse && modal ? <Alert>{listResponse}</Alert> : <></>}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={(e) => createList()}>

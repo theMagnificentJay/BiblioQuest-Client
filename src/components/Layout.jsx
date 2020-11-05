@@ -1,17 +1,25 @@
 import React, { useState } from "react";
-import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
-import './layout.css';
-
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
+import BookCard from "./BookCard";
 
-import { Container, Row, Col } from "reactstrap";
+import {
+  Input,
+  InputGroup,
+  Button,
+  InputGroupAddon,
+  Container,
+  Row,
+  Col,
+  Form,
+} from "reactstrap";
 
 function Layout(props) {
   const [results, showResults] = useState([]);
 
-  function searchAll() {
+  function searchAll(e) {
+    e.preventDefault();
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
@@ -22,10 +30,9 @@ function Layout(props) {
         showResults(res.items);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   }
-  console.log(results);
 
   function filterBook(filter) {
     console.log(filter);
@@ -37,15 +44,19 @@ function Layout(props) {
         showResults(res.items);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
-  };
+  }
 
   return (
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent updateToken={props.updateToken} />
+        <NavbarComponent
+          updateToken={props.updateToken}
+          clearToken={props.clearToken}
+          token={props.token}
+        />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">
@@ -53,16 +64,18 @@ function Layout(props) {
             {/*blank_space*/}
           </Col>
           <Col className="colTwo colColor rb bsb">
-            <InputGroup>
-              <Input
-                className="form-control"
-                id="searchInput"
-                placeholder="Search author, genre, title, or publisher . . ."
-              />
-              <InputGroupAddon addonType="append">
-                <Button onClick={(e) => searchAll()}>Search</Button>
-              </InputGroupAddon>
-            </InputGroup>
+            <Form onSubmit={searchAll}>
+              <InputGroup>
+                <Input
+                  className="form-control"
+                  id="searchInput"
+                  placeholder="Search author, genre, title, or publisher . . ."
+                />
+                <InputGroupAddon addonType="append">
+                  <Button onClick={(e) => searchAll()}>Search</Button>
+                </InputGroupAddon>
+              </InputGroup>
+            </Form>
           </Col>
           <Col className="colThree col rb" xs="2">
             {/*blank_space*/}
@@ -105,9 +118,7 @@ function Layout(props) {
                   Non-Fiction
                 </h5>
                 <hr />
-                <p onClick={(e) => filterBook("subject:art")}>
-                  Art
-                </p>
+                <p onClick={(e) => filterBook("subject:art")}>Art</p>
                 <p onClick={(e) => filterBook("subject:education")}>
                   Educational
                 </p>
@@ -139,17 +150,10 @@ function Layout(props) {
                 }}
               >
                 {results.length > 0 ? (
-                  results.map((bookItem) => {
+                  results.map((book, index) => {
                     return (
-                      <div style={{ margin: "10px auto" }}>
-                        <div>
-                          <div className="card-container">
-                            <img
-                              src={bookItem.volumeInfo.imageLinks === undefined ? "../assets/nocover.png" : bookItem.volumeInfo.imageLinks.thumbnail}
-                              alt=""
-                            />
-                          </div>
-                        </div>
+                      <div key={index}>
+                        <BookCard book={book} token={props.token} />
                       </div>
                     );
                   })

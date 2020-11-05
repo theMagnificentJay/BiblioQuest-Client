@@ -12,12 +12,23 @@ function App() {
     setToken(newToken);
   };
 
+  const clearToken = () => {
+    localStorage.clear();
+    setToken("");
+  };
+
   useEffect(() => {
     setToken(localStorage.getItem("token"));
     // console.log(token);
   }, [token]);
 
-  return <Layout updateToken={updateToken} token={token} />;
+  useEffect(() => {
+    document.title = "BiblioQuest"
+ }, []);
+
+  return (
+    <Layout updateToken={updateToken} clearToken={clearToken} token={token} />
+  );
 }
 
 export default App;
