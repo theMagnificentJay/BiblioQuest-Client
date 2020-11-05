@@ -33,7 +33,6 @@ function Layout(props) {
         console.error("Error:", error);
       });
   }
-  console.log(results);
 
   function filterBook(filter) {
     console.log(filter);
