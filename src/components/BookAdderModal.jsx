@@ -11,7 +11,6 @@ import {
   DropdownToggle,
   DropdownMenu,
   Form,
-  Alert,
 } from "reactstrap";
 
 const BookAdderModal = (props) => {
@@ -86,33 +85,39 @@ const BookAdderModal = (props) => {
         <Button onClick={toggle}>Add to Bookshelf</Button>
       </Form>
       <Modal isOpen={modal} toggle={toggle} className="yoyo">
-        <ModalHeader toggle={toggle}>
-          Would you like to add this volume to your Bookshelf?{" "}
-        </ModalHeader>
-        <ModalBody>
-          {`Just select a list and click "Add" to have  added to your bookshelf.`}
-          <Label></Label>
-          <Dropdown isOpen={dropdownOpen} toggle={toggle2}>
-            <DropdownToggle caret>Bookshevles</DropdownToggle>
-            <DropdownMenu>
-              {lists.length > 0 ? (
-                lists.map((list) => {
-                  return (
-                    <DropdownItem
-                      onClick={(e) => bookAddFetch(e.target.innerText)}
-                    >
-                      {list.title}
-                    </DropdownItem>
-                  );
-                })
-              ) : err ? (
-                <DropdownItem>{err.message}</DropdownItem>
-              ) : (
-                <></>
-              )}
-            </DropdownMenu>
-          </Dropdown>
-        </ModalBody>
+        {props.token ? (
+          <>
+            <ModalHeader toggle={toggle}>
+              Would you like to add this volume to your Bookshelf?{" "}
+            </ModalHeader>
+            <ModalBody>
+              <Dropdown isOpen={dropdownOpen} toggle={toggle2}>
+                <DropdownToggle caret>Bookshevles</DropdownToggle>
+                <DropdownMenu>
+                  {lists.length > 0 ? (
+                    lists.map((list) => {
+                      return (
+                        <DropdownItem
+                          onClick={(e) => bookAddFetch(e.target.innerText)}
+                        >
+                          {list.title}
+                        </DropdownItem>
+                      );
+                    })
+                  ) : err ? (
+                    <DropdownItem>{err.message}</DropdownItem>
+                  ) : (
+                    <></>
+                  )}
+                </DropdownMenu>
+              </Dropdown>
+            </ModalBody>
+          </>
+        ) : (
+          <ModalHeader toggle={toggle}>
+            Must have an account to add to Bookshelves.
+          </ModalHeader>
+        )}
         <ModalFooter>
           <Button color="secondary" onClick={toggle}>
             Okay

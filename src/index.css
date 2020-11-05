@@ -157,11 +157,13 @@ code {
   margin-right: 10px;
 }
 
-.categoryScroll p, .categoryScroll h5 {
+.categoryScroll p,
+.categoryScroll h5 {
   cursor: pointer;
 }
 
-.categoryScroll p:hover, .categoryScroll h5:hover {
+.categoryScroll p:hover,
+.categoryScroll h5:hover {
   text-decoration: underline;
   font-style: oblique;
 }
@@ -185,6 +187,7 @@ code {
 .displayBooks {
   display: flex;
   flex-wrap: wrap;
+  justify-content: space-between;
   position: relative;
   min-height: 62vh;
   max-height: 62vh;

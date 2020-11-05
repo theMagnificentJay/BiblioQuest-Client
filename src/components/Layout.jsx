@@ -3,7 +3,6 @@ import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
 import BookCard from "./BookCard";
-import BookAdderModal from "./BookAdderModal";
 
 import {
   Input,
