@@ -31,13 +31,14 @@ function Layout(props) {
     const searchInput = document.getElementById("searchInput").value;
 
     fetch(
-      "https://www.googleapis.com/books/v1/volumes?q=" +
-        searchInput +
-        "&maxResults=40&printType=books"
+      `https://www.googleapis.com/books/v1/volumes?q=${searchInput}&maxResults=40&printType=books`
     )
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }
   console.log(results);
@@ -50,6 +51,9 @@ function Layout(props) {
       .then((response) => response.json())
       .then((res) => {
         showResults(res.items);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }
 
@@ -117,11 +121,9 @@ function Layout(props) {
                   Non-Fiction
                 </h5>
                 <hr />
+                <p onClick={(e) => filterBook("subject:art")}>Art</p>
                 <p onClick={(e) => filterBook("subject:education")}>
                   Educational
-                </p>
-                <p onClick={(e) => filterBook("subject:historical")}>
-                  Historical
                 </p>
                 <p onClick={(e) => filterBook("subject:'self help'")}>
                   Self-help
