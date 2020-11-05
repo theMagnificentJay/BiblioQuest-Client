@@ -11,8 +11,8 @@ import BookAdderModal from "./BookAdderModal";
 
 const UserCard = (props) => {
   return (
-    <div>
-      <Card style={{ display: "flex" }}>
+    <div className="bookCardContainer">
+      <Card className="bookCard">
         <CardImg
           top
           width="100%"
@@ -22,11 +22,11 @@ const UserCard = (props) => {
               : props.book.volumeInfo.imageLinks.thumbnail
           }
           alt="Card image cap"
-          style={{ width: "10em", height: "15em" }}
+          style={{ width: "10em", height: "15em", margin: "auto", paddingTop: "10px" }}
         />
-        <CardBody>
-          <CardTitle tag="h5">{props.book.volumeInfo.title}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">
+        <CardBody className="bookCardBody">
+          <CardTitle className="bookCardBodyTitle" tag="h5">{props.book.volumeInfo.title}</CardTitle>
+          <CardSubtitle tag="h6" className="bookCardBodySubTitle mb-2 text-muted">
             {props.book.volumeInfo.subtitle ? (
               props.book.volumeInfo.subtitle
             ) : (
@@ -34,8 +34,8 @@ const UserCard = (props) => {
             )}
           </CardSubtitle>
           <CardText>{`Author(s): ${props.book.volumeInfo.authors}`}</CardText>
-          <BookAdderModal token={props.token} book={props.book} />
         </CardBody>
+          <BookAdderModal token={props.token} book={props.book} />
       </Card>
     </div>
   );

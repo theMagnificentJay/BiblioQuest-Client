@@ -83,7 +83,7 @@ const BookAdderModal = (props) => {
   return (
     <div>
       <Form inline onSubmit={(e) => e.preventDefault()}>
-        <Button onClick={toggle}>Add to Bookshelf</Button>
+        <Button onClick={toggle} style={{margin: "0 auto"}}>Add to Bookshelf</Button>
       </Form>
       <Modal isOpen={modal} toggle={toggle} className="yoyo">
         <ModalHeader toggle={toggle}>
