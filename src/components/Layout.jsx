@@ -3,7 +3,6 @@ import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
 import BookCard from "./BookCard";
-import BookAdderModal from "./BookAdderModal";
 
 import {
   Input,
@@ -17,7 +16,6 @@ import {
 
 function Layout(props) {
   const [results, showResults] = useState([]);
-  // const [show, setShow] = useState(false);
 
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
@@ -152,7 +150,6 @@ function Layout(props) {
                     return (
                       <div key={index}>
                         <BookCard book={book} token={props.token} />
-                        {/* <BookAdderModal book={book} token={props.token} /> */}
                       </div>
                     );
                   })
