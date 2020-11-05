@@ -8,7 +8,7 @@ const ListRouter = (props) => {
   const [err, setErr] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3030/list/allLists", {
+    fetch("https://biblioquest.herokuapp.com/list/allLists", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

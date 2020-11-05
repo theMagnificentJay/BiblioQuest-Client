@@ -1,14 +1,31 @@
 import React, { useState } from "react";
-import { Input, InputGroup, Button, InputGroupAddon } from "reactstrap";
-
 import NavbarComponent from "./NavbarComponent";
 import Footer from "./Footer";
 import UserListMenu from "./userLists/UserListMenu";
+import BookAdderModal from "./BookAdderModal";
 
-import { Container, Row, Col } from "reactstrap";
+import {
+  Input,
+  InputGroup,
+  Button,
+  InputGroupAddon,
+  Container,
+  Row,
+  Col,
+  Card,
+  CardBody,
+  CardText,
+  CardTitle,
+  CardSubtitle,
+  CardImg,
+} from "reactstrap";
 
 function Layout(props) {
   const [results, showResults] = useState([]);
+  const [show, setShow] = useState(false);
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
 
   function searchAll() {
     const searchInput = document.getElementById("searchInput").value;
@@ -134,17 +151,42 @@ function Layout(props) {
                 }}
               >
                 {results.length > 0 ? (
-                  results.map((bookItem) => {
+                  results.map((book, index) => {
                     return (
-                      <div style={{ margin: "10px auto" }}>
-                        <div>
-                          <div className="card-container">
-                            <img
-                              src={bookItem.volumeInfo.imageLinks.thumbnail}
-                              alt=""
-                            />
-                          </div>
-                        </div>
+                      <div>
+                        <Card key={index} style={{ display: "flex" }}>
+                          <CardImg
+                            top
+                            width="100%"
+                            src={
+                              book.volumeInfo.imageLinks === undefined
+                                ? "../assets/nocover.png"
+                                : book.volumeInfo.imageLinks.thumbnail
+                            }
+                            alt="Card image cap"
+                            style={{ width: "10em", height: "15em" }}
+                          />
+                          <CardBody>
+                            <CardTitle tag="h5">
+                              {book.volumeInfo.title}
+                            </CardTitle>
+                            <CardSubtitle tag="h6" className="mb-2 text-muted">
+                              {book.volumeInfo.subtitle ? (
+                                book.volumeInfo.subtitle
+                              ) : (
+                                <></>
+                              )}
+                            </CardSubtitle>
+                            <CardText>{`Author: ${book.volumeInfo.author}`}</CardText>
+                            <Button onClick={toggle}>Add to Bookshelf</Button>
+                          </CardBody>
+                          <BookAdderModal
+                            modal={modal}
+                            toggle={toggle}
+                            book={book}
+                            token={props.token}
+                          />
+                        </Card>
                       </div>
                     );
                   })
