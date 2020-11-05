@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {
+  Alert,
   Button,
   Modal,
   ModalHeader,
@@ -7,7 +8,6 @@ import {
   ModalFooter,
   Label,
   Input,
-  Alert,
   Card,
   CardTitle,
   CardSubtitle,
@@ -19,18 +19,15 @@ import {
 const DisplayListModal = (props) => {
   const [books, setBooks] = useState([]);
   const [modal, setModal] = useState(false);
-  const [err, setErr] = useState("");
-  const [update, setUpdate] = useState("");
+  const [btnTitle, setBtnTitle] = useState("");
   const [newListTitle, setNewListTitle] = useState("");
-  const [deleteResponse, setDeleteResponse] = useState("");
-  const [updateResponse, setUpdateResponse] = useState("");
 
   const toggle = () => {
     setModal(!modal);
   };
 
   const buttonTitleUpdater = () => {
-    setUpdate(!update);
+    setBtnTitle(!btnTitle);
   };
 
   useEffect(() => {
@@ -47,7 +44,7 @@ const DisplayListModal = (props) => {
         setBooks(booksData.data);
       })
       .catch((err) => {});
-  }, []);
+  }, [modal]);
 
   const listDeleter = () => {
     fetch(
@@ -62,13 +59,11 @@ const DisplayListModal = (props) => {
     )
       .then((res) => res.json())
       .then((res) => {
-        setDeleteResponse(res.message);
-        props.componentRefresher(res.message);
-        // toggle();
+        props.setDeleteResponse(res.message);
+        toggle();
       })
       .catch((err) => {
-        setErr(err);
-        console.log(err);
+        props.setDeleteResponse(err);
       });
   };
 
@@ -83,12 +78,12 @@ const DisplayListModal = (props) => {
     })
       .then((res) => res.json())
       .then((res) => {
-        setUpdateResponse(res.message);
+        props.setUpdateListRes(res.message);
+        console.log(res.message);
         toggle();
       })
       .catch((err) => {
-        setErr(err);
-        console.log(err);
+        props.setUpdateListRes(err);
       });
   };
 
@@ -106,7 +101,7 @@ const DisplayListModal = (props) => {
         console.log(res.message);
       })
       .catch((err) => {
-        setErr(err);
+        props.setErr(err);
         console.log(err);
       });
   };
@@ -117,7 +112,7 @@ const DisplayListModal = (props) => {
       <Modal isOpen={modal} toggle={toggle} className="{className}">
         <ModalHeader toggle={toggle}>{props.list.title}</ModalHeader>
         <ModalBody>
-          {update ? (
+          {btnTitle ? (
             <>
               <Label for="newListTitle" className="sr-only" />
               <Input
@@ -125,14 +120,11 @@ const DisplayListModal = (props) => {
                 type="text"
                 className="form-control"
                 id="newListTitle"
-                placeholder="e.g. Philosophy"
+                placeholder={props.list.title}
               />
-              {updateResponse && modal ? (
-                <Alert>{updateResponse}</Alert>
-              ) : (
-                <></>
-              )}
-              <Button onClick={(e) => listUpdater()}> Submit Update</Button>
+              <Button onClick={(e) => listUpdater()} color="warning">
+                Submit Update
+              </Button>
             </>
           ) : books.length > 0 ? (
             books.map((book, index) => {
@@ -177,8 +169,8 @@ const DisplayListModal = (props) => {
                 </div>
               );
             })
-          ) : err ? (
-            <p>{err}</p>
+          ) : props.err ? (
+            <p>{props.err}</p>
           ) : (
             <p>
               No books on your shelf yet. Search some books and add the ones you
@@ -191,10 +183,10 @@ const DisplayListModal = (props) => {
             Delete Bookshelf
           </Button>
           <Button color="primary" onClick={buttonTitleUpdater}>
-            {update ? <>Cancel Update</> : <>Update Bookshelf Title?</>}
+            {btnTitle ? <>Cancel Update</> : <>Update Bookshelf Title?</>}
           </Button>
           <Button color="secondary" onClick={toggle}>
-            Cancel
+            Close
           </Button>
         </ModalFooter>
       </Modal>
