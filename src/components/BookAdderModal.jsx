@@ -11,10 +11,11 @@ import {
   DropdownToggle,
   DropdownMenu,
   Form,
+  Alert,
 } from "reactstrap";
 
 const BookAdderModal = (props) => {
-  const [response, setResponse] = useState("");
+  const [bookAddRes, setBookAddRes] = useState("");
   const [err, setErr] = useState("");
   const [lists, setLists] = useState("");
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -53,7 +54,7 @@ const BookAdderModal = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setResponse(data.message);
+        setBookAddRes(data.message);
         console.log(data.message);
       })
       .catch((err) => {
@@ -75,9 +76,9 @@ const BookAdderModal = (props) => {
         setLists(listData);
       })
       .catch((err) => {
-        setErr(err);
+        setErr(err.message);
       });
-  }, [props.token]);
+  }, [modal]);
 
   return (
     <div>
@@ -92,7 +93,7 @@ const BookAdderModal = (props) => {
           {`Just select a list and click "Add" to have  added to your bookshelf.`}
           <Label></Label>
           <Dropdown isOpen={dropdownOpen} toggle={toggle2}>
-            <DropdownToggle caret>Dropdown</DropdownToggle>
+            <DropdownToggle caret>Bookshevles</DropdownToggle>
             <DropdownMenu>
               {lists.length > 0 ? (
                 lists.map((list) => {
@@ -114,7 +115,7 @@ const BookAdderModal = (props) => {
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={toggle}>
-            Cancel
+            Okay
           </Button>
         </ModalFooter>
       </Modal>

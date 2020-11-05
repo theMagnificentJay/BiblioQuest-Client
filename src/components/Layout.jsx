@@ -53,7 +53,11 @@ function Layout(props) {
     <Container className="masterContainer rb bsb" fluid="?">
       <div className="bookRibbon" />
       <Row className="navRow">
-        <NavbarComponent updateToken={props.updateToken} />
+        <NavbarComponent
+          updateToken={props.updateToken}
+          clearToken={props.clearToken}
+          token={props.token}
+        />
       </Row>
       <Container className="mainContainer rb" fluid="?">
         <Row className="topRow row rb">

@@ -13,11 +13,11 @@ import {
 const CreateListModal = (props) => {
   const [modal, setModal] = useState(false);
   const [listTitle, setListTitle] = useState("");
-  const [listResponse, setListResponse] = useState("");
+  // const [listResponse, setListResponse] = useState("");
 
   const toggle = () => {
     setModal(!modal);
-    setListResponse("");
+    props.setListResponse("");
   };
 
   const createList = () => {
@@ -31,7 +31,8 @@ const CreateListModal = (props) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        setListResponse(data.message);
+        props.setListResponse(data.message);
+        toggle();
       });
   };
 
@@ -56,7 +57,6 @@ const CreateListModal = (props) => {
             id="listTitle"
             placeholder="e.g. Philosophy"
           />
-          {listResponse && modal ? <Alert>{listResponse}</Alert> : <></>}
         </ModalBody>
         <ModalFooter>
           <Button color="primary" onClick={(e) => createList()}>
